@@ -31,7 +31,7 @@ npm install  # or yarn install
 ```bash
 npm run dev  # or yarn dev
 ```
-> The app will be running at `http://localhost:5173/`
+> The app will be running at `httpq://localhost:5173/`
 
 ## Build for Production
 ```bash
