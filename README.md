@@ -1,8 +1,41 @@
-# React + Vite
+# SeekersConnect - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend of **SeekersConnect**, a job posting and skill development website built using **React** and **Vite**.
 
-Currently, two official plugins are available:
+## Features
+- User-friendly job posting and browsing
+- Skill development resources and courses
+- Responsive and modern UI
+- Authentication and user profiles
+- Fast and optimized performance with Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- **Frontend:** React, Vite, Tailwind CSS
+- **State Management:** React Context API / Redux (if applicable)
+- **Routing:** React Router
+- **Package Manager:** npm / yarn
+
+## Getting Started
+### Clone the Repository
+```bash
+git clone https://github.com/your-username/seekersconnect-frontend.git
+cd seekersconnect-frontend
+```
+
+### Install Dependencies
+```bash
+npm install  # or yarn install
+```
+
+### Start the Development Server
+```bash
+npm run dev  # or yarn dev
+```
+> The app will be running at `http://localhost:5173/`
+
+## Build for Production
+```bash
+npm run build  # or yarn build
+```
+## License
+This project is licensed under the MIT License.
