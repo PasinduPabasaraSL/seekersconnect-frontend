@@ -1,19 +1,11 @@
-import Button from '@mui/material/Button';
-
 export default function MyButton(props) {
     return (
         <div>
-            <Button
-                variant="contained"
-                sx={{
-                    position: "static",
-                    backgroundColor: props.backgroundColor,
-                    color: props.txtColor,
-                    borderRadius: 5
-                }}
-            >
+            <button
+                class="px-4 py-1 font-semibold rounded-2xl shadow-md cursor-pointer"
+                style={{ background: props.backgroundColor, color: props.txtColor }}>
                 {props.name}
-            </Button>
+            </button>
 
         </div>
     );
