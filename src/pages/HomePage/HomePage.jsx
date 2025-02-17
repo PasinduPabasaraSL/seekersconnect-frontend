@@ -1,7 +1,11 @@
+import NavBar from '../../components/NavBar/NavBar.jsx';
+import HeroSection from '../../components/HeroSection/HeroSection.jsx';
+
 export default function HomePage() {
     return(
         <div>
-            <h1>Home Page</h1>
+            <NavBar/>
+            <HeroSection/>
         </div>
     );
 }
