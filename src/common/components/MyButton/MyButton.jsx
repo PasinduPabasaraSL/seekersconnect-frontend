@@ -1,4 +1,3 @@
-import { PanoramaPhotosphere } from '@mui/icons-material';
 import Button from '@mui/material/Button';
 
 export default function MyButton(props) {
@@ -9,11 +8,13 @@ export default function MyButton(props) {
                 sx={{
                     position: "static",
                     backgroundColor: props.backgroundColor,
-                    color: props.txtColor
+                    color: props.txtColor,
+                    borderRadius: 5
                 }}
             >
                 {props.name}
             </Button>
+
         </div>
     );
 }

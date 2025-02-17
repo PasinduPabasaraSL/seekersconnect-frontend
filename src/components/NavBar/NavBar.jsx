@@ -10,6 +10,7 @@ export default function NavBar() {
                 <div className="flex space-x-8 text-white text-lg">
                     <a href="#" className="hover:text-accent transition">Home</a>
                     <a href="#" className="hover:text-accent transition">Jobs</a>
+                    <a href="#" className="hover:text-accent transition">Learning Paths</a>
                     <a href="#" className="hover:text-accent transition">Companies</a>
                     <MyButton className="ml-4" name="Sign In" backgroundColor="#00cec9" txtColor="black" />
                 </div>
