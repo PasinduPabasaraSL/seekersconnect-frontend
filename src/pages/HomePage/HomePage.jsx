@@ -3,6 +3,7 @@ import CourseCard from '../../common/components/Card/CourseCard.jsx';
 import HeroSection from '../../components/HeroSection/HeroSection.jsx';
 import NavBar from '../../components/NavBar/NavBar.jsx';
 import Footer from '../../components/Footer/Footer.jsx';
+import CategoryCard from '../../common/components/Card/CategoryCard.jsx';
 
 export default function HomePage() {
     const jobs = [
@@ -67,6 +68,69 @@ export default function HomePage() {
         }
     ]; // api call
 
+    const categories = [
+        {
+            title: "Software Development",
+            jobsCount: "20"
+        },
+        {
+            title: "Data Science & Analytics",
+            jobsCount: "15"
+        },
+        {
+            title: "Cybersecurity",
+            jobsCount: "10"
+        },
+        {
+            title: "UI/UX Design",
+            jobsCount: "12"
+        },
+        {
+            title: "Cloud Computing",
+            jobsCount: "18"
+        },
+        {
+            title: "Marketing & Sales",
+            jobsCount: "25"
+        },
+        {
+            title: "Project Management",
+            jobsCount: "14"
+        },
+        {
+            title: "Finance & Accounting",
+            jobsCount: "16"
+        },
+        {
+            title: "Human Resources",
+            jobsCount: "9"
+        },
+        {
+            title: "Healthcare & Medical",
+            jobsCount: "22"
+        },
+        {
+            title: "Engineering & Architecture",
+            jobsCount: "13"
+        },
+        {
+            title: "Customer Support",
+            jobsCount: "30"
+        },
+        {
+            title: "Education & Training",
+            jobsCount: "11"
+        },
+        {
+            title: "Legal & Compliance",
+            jobsCount: "7"
+        },
+        {
+            title: "Logistics & Supply Chain",
+            jobsCount: "19"
+        }
+    ]; // api call
+
     return (
         <div>
             <NavBar />
@@ -102,6 +166,16 @@ export default function HomePage() {
                 </div>
 
                 <h2 className='pb-6 pt-4 text-3xl font-bold text-center'>Find Your Jobs By Category</h2>
+
+                <div className='flex flex-wrap justify-start gap-6'>
+                    {categories.map((category, index) => (
+                        <CategoryCard
+                            key={index}
+                            title={category.title}
+                            jobsCount={category.jobsCount}
+                        />
+                    ))}
+                </div>
 
 
             </div>
