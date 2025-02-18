@@ -7,7 +7,7 @@ export default function CourseCard(props) {
         <div className="bg-white rounded-lg shadow-lg p-6 mb-4 w-75 hover:scale-105 transform transition duration-300 hover:shadow-2xl">
             <div className="flex flex-col justify-between mb-4">
                 <div className="mb-2">
-                    <div className="text-xl font-semibold text-gray-800 hover:text-blue-600 transition duration-300">
+                    <div className="text-xl font-semibold text-gray-800 hover:text-[#00cec9] transition duration-300">
                         {courseName}
                     </div>
                     <div className="text-lg text-gray-600">{instructor}</div>

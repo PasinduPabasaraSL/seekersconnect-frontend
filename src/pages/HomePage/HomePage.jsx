@@ -1,8 +1,6 @@
-import JobCard from '../../common/components/Card/JobCard.jsx';
+import { JobCard } from '../../common/components/Card/JobCard.jsx';
 import CourseCard from '../../common/components/Card/CourseCard.jsx';
 import HeroSection from '../../components/HeroSection/HeroSection.jsx';
-import NavBar from '../../components/NavBar/NavBar.jsx';
-import Footer from '../../components/Footer/Footer.jsx';
 import CategoryCard from '../../common/components/Card/CategoryCard.jsx';
 
 export default function HomePage() {
@@ -133,7 +131,6 @@ export default function HomePage() {
 
     return (
         <div>
-            <NavBar />
             <HeroSection />
             <div className="p-6 bg-[#f5f6fa]">
                 <h1 className='pb-6 text-2xl font-bold'>Recent Jobs</h1>
@@ -146,6 +143,7 @@ export default function HomePage() {
                             location={job.location}
                             type={job.jobType}
                             time={job.time}
+                            width="300px"
                         />
                     ))}
                 </div>
@@ -178,9 +176,6 @@ export default function HomePage() {
                 </div>
 
 
-            </div>
-            <div>
-                <Footer />
             </div>
         </div>
     );
