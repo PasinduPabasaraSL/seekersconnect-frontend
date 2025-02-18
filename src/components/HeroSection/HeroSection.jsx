@@ -6,7 +6,7 @@ export default function HeroSection() {
     const [location, setLocation] = useState('');
 
     const locations = [
-        "New York, NY", "San Francisco, CA", "London, UK",
+        "Colombo, Sri Lanka", "New York, NY", "San Francisco, CA", "London, UK",
         "Remote", "Chicago, IL", "Boston, MA"
     ];
 
@@ -62,7 +62,7 @@ export default function HeroSection() {
                                 </div>
                             </div>
 
-                            <MyButton name="Search Jobs" txtColor="white" backgroundColor="#047857" height="54px" radius="10px"/>
+                            <MyButton name="Search Jobs" txtColor="white" backgroundColor="#047857" height="54px" radius="10px" />
                         </div>
                     </div>
                 </div>
