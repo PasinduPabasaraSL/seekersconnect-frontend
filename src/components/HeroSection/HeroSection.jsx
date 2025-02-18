@@ -1,44 +1,72 @@
-import MyButton from "../../common/components/MyButton/MyButton";
+import React, { useState } from 'react';
+import MyButton from '../../common/components/MyButton/MyButton';
 
 export default function HeroSection() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [location, setLocation] = useState('');
+
+    const locations = [
+        "New York, NY", "San Francisco, CA", "London, UK",
+        "Remote", "Chicago, IL", "Boston, MA"
+    ];
+
     return (
-        <div className="h-3/5 bg-[linear-gradient(45deg,var(--color-primary),var(--color-secondary))] max-w-9xl mx-auto left-0 w-full z-1 p-4 absolute top-17">
-            <div className="w-fit flex-col justify-center items-center h-64 absolute left-1/2 transform -translate-x-1/2 top-20">
-                <h1 className="text-white text-5xl font-bold text-center">Find Your Dream Job Today</h1>
-                <p className="text-white font-normal text-lg pt-4 pb-10 text-center">Search, learn, and connect with opportunities that match you.</p>
+        <div className="relative h-[500px] bg-gradient-to-r from-emerald-700 to-emerald-900">
+            <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] mix-blend-overlay opacity-10" />
+            <div className="max-w-6xl mx-auto px-4 h-full flex flex-col justify-center items-center">
+                <div className="w-full max-w-4xl text-center space-y-6">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                        Find Your Dream Job Today
+                    </h1>
+                    <p className="text-emerald-100 text-lg md:text-xl max-w-2xl mx-auto">
+                        Search, learn, and connect with opportunities that match your expertise
+                    </p>
 
-                <div className="flex space-x-4 w-full max-w-4xl mx-auto">
-                    {/* Input Box for Keyword */}
-                    <input
-                        type="text"
-                        placeholder="Enter keyword"
-                        className="w-2/5 p-3 rounded-xl border border-gray-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
-                    />
+                    <div className="bg-white rounded-xl shadow-2xl p-4 mt-8">
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <div className="relative flex-1">
+                                <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                                    <svg className="h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                <input
+                                    type="text"
+                                    className="w-full pl-10 pr-4 py-3 rounded-lg border-2 border-emerald-100 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-colors"
+                                    placeholder="Job title, keywords, or company"
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                />
+                            </div>
 
-                    {/* Dropdown for Location */}
-                    <div className="relative w-2/5">
-                        <select
-                            className="appearance-none w-full p-3 rounded-xl border border-gray-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white pr-8"
-                        >
-                            <option value="" disabled selected>Select Location</option>
-                            <option value="new-york">New York</option>
-                            <option value="san-francisco">San Francisco</option>
-                            <option value="london">London</option>
-                            <option value="singapore">Singapore</option>
-                        </select>
-                        <div className="absolute top-1/2 right-3 transform -translate-y-1/2 pointer-events-none">
-                            <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
+                            <div className="relative flex-1">
+                                <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                                    <svg className="h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                <select
+                                    className="w-full pl-10 pr-10 py-3 rounded-lg border-2 border-emerald-100 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-colors appearance-none bg-white"
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                >
+                                    <option value="">All Locations</option>
+                                    {locations.map((loc, index) => (
+                                        <option key={index} value={loc}>{loc}</option>
+                                    ))}
+                                </select>
+                                <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
+                                    <svg className="h-5 w-5 text-emerald-600" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <MyButton name="Search Jobs" txtColor="white" backgroundColor="#047857" height="54px" radius="10px"/>
                         </div>
                     </div>
-
-                    {/* Search Button */}
-                    <MyButton name="Search" backgroundColor="#00cec9" txtColor="black" fontSize="20px" height="50px" />
-
                 </div>
             </div>
         </div>
-
     );
 }

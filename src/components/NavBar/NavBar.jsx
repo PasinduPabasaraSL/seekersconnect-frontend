@@ -1,43 +1,94 @@
-import { useState } from "react";
-import MyButton from "../../common/components/MyButton/MyButton";
+import { useState } from 'react';
+import MyButton from '../../common/components/MyButton/MyButton';
 
-export default function NavBar() {
+const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [showTalentDropdown, setShowTalentDropdown] = useState(false);
 
     return (
-        <nav className="bg-primary fixed top-0 left-0 w-full z-10 p-4">
-            <div className="max-w-7xl mx-auto flex justify-between items-center">
-                <div className="text-white text-2xl font-bold">
-                    Seekers<span className="text-accent">Connect</span>
-                </div>
+        <nav className="fixed top-0 left-0 w-full bg-white border-b border-gray-200 z-50">
+            {/* Main Navigation */}
+            <div className="max-w-7xl mx-auto px-4">
+                <div className="flex justify-between items-center h-16">
+                    {/* Logo */}
+                    <div className="flex items-center space-x-8">
+                        <span className="text-2xl font-bold text-[#14a800]">
+                            SeekersConnect
+                        </span>
 
-                {/* Desktop Menu */}
-                <div className="hidden md:flex space-x-8 text-white text-lg">
-                    <a href="#" className="hover:text-accent transition">Home</a>
-                    <a href="#" className="hover:text-accent transition">Jobs</a>
-                    <a href="#" className="hover:text-accent transition">Learning Paths</a>
-                    <a href="#" className="hover:text-accent transition">Companies</a>
-                    <MyButton name="Sign In" backgroundColor="#00cec9" txtColor="black" />
-                </div>
+                        {/* Desktop Menu - Left Side */}
+                        <div className="hidden lg:flex items-center space-x-8">
+                            <div className="relative group">
+                                <button
+                                    className="flex items-center text-gray-600 hover:text-[#14a800] py-6"
+                                    onMouseEnter={() => setShowTalentDropdown(true)}
+                                    onMouseLeave={() => setShowTalentDropdown(false)}
+                                >
+                                    <span>Find Talent</span>
+                                    <span className="ml-1">▼</span>
+                                </button>
+                                {showTalentDropdown && (
+                                    <div
+                                        className="absolute top-full left-0 bg-white shadow-lg rounded-b-lg w-64 py-2"
+                                        onMouseEnter={() => setShowTalentDropdown(true)}
+                                        onMouseLeave={() => setShowTalentDropdown(false)}
+                                    >
+                                        <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800]">Become an Instructor</a>
+                                        <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800]">Start Learning</a>
+                                        <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800]">CV Booster</a>
+                                    </div>
+                                )}
+                            </div>
+                            <a href="#" className="text-gray-600 hover:text-[#14a800]">Find Job</a>
+                            <a href="#" className="text-gray-600 hover:text-[#14a800]">Why SeekersConnect</a>
+                        </div>
+                    </div>
 
-                {/* Mobile Menu Button */}
-                <div className="md:hidden">
-                    <button onClick={() => setIsOpen(!isOpen)} className="text-white text-3xl">
-                        {isOpen ? "✖" : "☰"}
-                    </button>
+                    {/* Desktop Menu - Right Side */}
+                    <div className="hidden lg:flex items-center space-x-8">
+                        <a href="#" className="text-gray-600 hover:text-[#14a800]">Sign In</a>
+                        <MyButton name="Post a Job" txtColor="white" backgroundColor="#14a800" height="35px" radius="24px" />
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="lg:hidden flex items-center space-x-4">
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="text-gray-600 hover:text-[#14a800] p-2 text-2xl"
+                        >
+                            {isOpen ? '×' : '☰'}
+                        </button>
+                    </div>
                 </div>
             </div>
 
             {/* Mobile Menu */}
-            {isOpen && (
-                <div className="md:hidden bg-zinc-100 absolute top-16 left-0 w-full flex flex-col items-center space-y-4 py-2 text-black text-lg">
-                    <a href="#">Home</a>
-                    <a href="#">Jobs</a>
-                    <a href="#">Learning Paths</a>
-                    <a href="#">Companies</a>
-                    <a href="#">Sign In / Register</a>
+            <div className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+                } overflow-hidden bg-white border-t border-gray-200`}>
+                <div className="px-4 py-2 space-y-1">
+                    <div className="py-2">
+                        <button className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md flex justify-between items-center">
+                            Find Talent
+                            <span className="text-xs">▼</span>
+                        </button>
+                        <div className="pl-4 space-y-1">
+                            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Become an Instructor</a>
+                            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Start Learning</a>
+                            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">CV Booster</a>
+                        </div>
+                    </div>
+                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Find Job</a>
+                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Why SeekersConnect</a>
+                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Sign In</a>
+                    <div className="pt-2">
+                        <button className="w-full bg-[#14a800] text-white px-6 py-2 rounded-full hover:bg-[#3c8224] transition-colors">
+                            Post a Job
+                        </button>
+                    </div>
                 </div>
-            )}
+            </div>
         </nav>
     );
-}
+};
+
+export default NavBar;
