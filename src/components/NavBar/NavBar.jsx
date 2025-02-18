@@ -20,7 +20,7 @@ const NavBar = () => {
                         <div className="hidden lg:flex items-center space-x-8">
                             <div className="relative group">
                                 <button
-                                    className="flex items-center text-gray-600 hover:text-[#14a800] py-6"
+                                    className="flex items-center text-gray-600 hover:text-[#14a800] py-6 "
                                     onMouseEnter={() => setShowTalentDropdown(true)}
                                     onMouseLeave={() => setShowTalentDropdown(false)}
                                 >

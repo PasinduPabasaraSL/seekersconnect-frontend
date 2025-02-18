@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MyButton from '../../common/components/MyButton/MyButton';
+import bgImage from '../../assets/bg.jpg';
 
 export default function HeroSection() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -11,14 +12,14 @@ export default function HeroSection() {
     ];
 
     return (
-        <div className="relative h-[500px] bg-gradient-to-r from-emerald-700 to-emerald-900">
-            <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] mix-blend-overlay opacity-10" />
-            <div className="max-w-6xl mx-auto px-4 h-full flex flex-col justify-center items-center">
+        <div className="relative h-[500px] bg-cover  bg-no-repeat" style={{ backgroundImage: `url(${bgImage})` }}>
+            <div className="absolute inset-0 bg-black opacity-40" />
+            <div className="max-w-6xl mx-auto px-4 h-full flex flex-col justify-center items-center relative">
                 <div className="w-full max-w-4xl text-center space-y-6">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                         Find Your Dream Job Today
                     </h1>
-                    <p className="text-emerald-100 text-lg md:text-xl max-w-2xl mx-auto">
+                    <p className="text-white text-lg md:text-xl max-w-2xl mx-auto">
                         Search, learn, and connect with opportunities that match your expertise
                     </p>
 

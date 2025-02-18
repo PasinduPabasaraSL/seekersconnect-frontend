@@ -101,6 +101,9 @@ export default function HomePage() {
                     ))}
                 </div>
 
+                <h2 className='pb-6 pt-4 text-3xl font-bold text-center'>Find Your Jobs By Category</h2>
+
+
             </div>
             <div>
                 <Footer />
