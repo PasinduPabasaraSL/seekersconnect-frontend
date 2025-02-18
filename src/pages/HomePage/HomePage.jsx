@@ -2,10 +2,10 @@ import NavBar from '../../components/NavBar/NavBar.jsx';
 import HeroSection from '../../components/HeroSection/HeroSection.jsx';
 
 export default function HomePage() {
-    return(
+    return (
         <div>
-            <NavBar/>
-            <HeroSection/>
+            <NavBar />
+            <HeroSection />
         </div>
     );
 }
