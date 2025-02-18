@@ -11,7 +11,7 @@ This repository contains the frontend of **SeekersConnect**, a job posting and s
 
 ## Tech Stack
 - **Frontend:** React, Vite, Tailwind CSS
-- **State Management:** React Context API / Redux (if applicable)
+- **State Management:** React Context API
 - **Routing:** React Router
 - **Package Manager:** npm / yarn
 
