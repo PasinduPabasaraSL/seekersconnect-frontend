@@ -29,13 +29,7 @@ export default function JobsPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-gray-50">
-            <header className="bg-white shadow-sm">
-                <div className="max-w-6xl mx-auto px-4 py-6">
-                    <h1 className="text-3xl font-bold text-gray-900">Find Your Next Role</h1>
-                </div>
-            </header>
-
+        <div className="min-h-screen bg-gray-50 mt-15">
             <div className="max-w-6xl mx-auto px-4 py-8">
                 <div className="bg-white rounded-xl shadow-md p-6 mb-8">
                     <div className="flex flex-col md:flex-row gap-4">
