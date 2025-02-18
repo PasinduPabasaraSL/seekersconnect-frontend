@@ -1,8 +1,10 @@
+import MyButton from "../MyButton/MyButton";
+
 export default function JobCard(props) {
     const { title, company, location, type, time } = props;
 
     return (
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-4 w-72 hover:scale-105 transform transition duration-300 cursor-pointer">
+        <div className="bg-white rounded-lg shadow-lg p-6 mb-4 w-75 hover:scale-105 transform transition duration-300">
             <div className="flex flex-col justify-between mb-4">
                 <div className="mb-2">
                     <div className="text-xl font-semibold text-gray-800">{title}</div>
@@ -10,13 +12,18 @@ export default function JobCard(props) {
                 </div>
                 <div className="flex justify-between items-center">
                     <div className="text-sm text-gray-500">{location}</div>
-                    <div className="bg-blue-100 text-blue-600 text-xs font-medium rounded px-2 py-1">
+                    <div className="bg-gray-100 text-blue-600 text-xs font-medium rounded px-2 py-1">
                         {type}
                     </div>
                 </div>
             </div>
 
             <div className="text-xs text-gray-400 text-left">{time}</div>
+
+            {/* Apply Button */}
+            <div className="mt-6 text-center">
+                <MyButton name="Apply Now" width="200px" backgroundColor="black" radius="20px" txtColor="white" />
+            </div>
         </div>
     );
 }
