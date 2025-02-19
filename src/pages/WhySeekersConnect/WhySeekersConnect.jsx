@@ -1,6 +1,7 @@
 import React from 'react';
 import { Briefcase, MapPin, Clock } from 'lucide-react';
 import MyButton from '../../common/components/MyButton/MyButton';
+import CoverImage from '../../assets/cover.png';
 
 const WhySeekersConnect = () => {
     return (
@@ -78,7 +79,7 @@ const WhySeekersConnect = () => {
             </section>
 
             {/* How It Works */}
-            <section className="bg-gray-100 p-12 rounded-lg mb-16">
+            <section className="bg-gray-100 p-12 rounded-lg mb-16 bg-cover bg-no-repeat" style={{ backgroundImage: `url(${CoverImage})` }} >
                 <h2 className="text-4xl font-semibold text-gray-900 text-center mb-8">How It Works</h2>
                 <div className="flex justify-between items-center max-w-5xl mx-auto">
                     <div className="text-center w-1/3">

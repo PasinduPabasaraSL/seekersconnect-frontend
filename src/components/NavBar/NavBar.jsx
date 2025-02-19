@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import MyButton from '../../common/components/MyButton/MyButton';
+import { Link } from 'react-router';
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,12 +13,16 @@ const NavBar = () => {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <div className="flex items-center space-x-8">
-                        <span className="text-2xl font-bold text-[#14a800]">
-                            SeekersConnect
-                        </span>
+                        <Link to="/">
+                            <span className="text-2xl font-bold text-[#14a800]">
+                                SeekersConnect
+                            </span>
+
+                        </Link>
 
                         {/* Desktop Menu - Left Side */}
                         <div className="hidden lg:flex items-center space-x-8">
+                            <Link to="/"> <li className="text-gray-600 hover:text-[#14a800] list-none"> Home </li> </Link>
                             <div className="relative group">
                                 <button
                                     className="flex items-center text-gray-600 hover:text-[#14a800] py-6 "
@@ -33,20 +38,20 @@ const NavBar = () => {
                                         onMouseEnter={() => setShowTalentDropdown(true)}
                                         onMouseLeave={() => setShowTalentDropdown(false)}
                                     >
-                                        <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800]">Become an Instructor</a>
-                                        <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800]">Start Learning</a>
-                                        <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800]">CV Booster</a>
+                                        <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] cursor-pointer">Become an Instructor</li>
+                                        <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] cursor-pointer">Start Learning</li>
+                                        <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] cursor-pointer">CV Booster</li>
                                     </div>
                                 )}
                             </div>
-                            <a href="#" className="text-gray-600 hover:text-[#14a800]">Find Job</a>
-                            <a href="#" className="text-gray-600 hover:text-[#14a800]">Why SeekersConnect</a>
+                            <Link to="/jobs"> <li className="list-none text-gray-600 hover:text-[#14a800]">Find Job</li> </Link>
+                            <Link to="/why">  <li className="list-none text-gray-600 hover:text-[#14a800]">Why SeekersConnect</li> </Link>
                         </div>
                     </div>
 
                     {/* Desktop Menu - Right Side */}
                     <div className="hidden lg:flex items-center space-x-8">
-                        <a href="#" className="text-gray-600 hover:text-[#14a800]">Sign In</a>
+                        <li className="text-gray-600 hover:text-[#14a800] list-none cursor-pointer">Sign In</li>
                         <MyButton name="Post a Job" txtColor="white" backgroundColor="#14a800" height="35px" radius="24px" />
                     </div>
 
