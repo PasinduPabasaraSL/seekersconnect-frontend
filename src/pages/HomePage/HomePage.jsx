@@ -1,7 +1,7 @@
 import { JobCard } from '../../common/components/Card/JobCard.jsx';
-import CourseCard from '../../common/components/Card/CourseCard.jsx';
 import HeroSection from '../../components/HeroSection/HeroSection.jsx';
 import CategoryCard from '../../common/components/Card/CategoryCard.jsx';
+import CourseList from '../../common/components/CourseList/CourseList.jsx';
 
 export default function HomePage() {
     const jobs = [
@@ -34,37 +34,6 @@ export default function HomePage() {
             jobType: "Part-time"
         }
     ];  // api call
-
-    const courses = [
-        {
-            courseName: 'React for Beginners',
-            instructor: 'John Doe',
-            venue: 'Online',
-            category: 'Online',
-            schedule: 'Mon, Wed, Fri - 10:00 AM'
-        },
-        {
-            courseName: 'Advanced JavaScript',
-            instructor: 'Jane Smith',
-            venue: 'New York, NY',
-            category: 'In-person',
-            schedule: 'Tue, Thu - 2:00 PM'
-        },
-        {
-            courseName: 'Introduction to Python',
-            instructor: 'Pasindu Pabasara',
-            venue: 'Online',
-            category: 'Online',
-            schedule: 'Mon, Wed, Fri - 1:00 PM'
-        },
-        {
-            courseName: 'Certificate Course in Digital Photography',
-            instructor: 'NIBM',
-            venue: 'Colombo, Sri Lanka',
-            category: 'in-person',
-            schedule: 'Mon, Wed, Fri - 1:00 PM'
-        }
-    ]; // api call
 
     const categories = [
         {
@@ -150,18 +119,7 @@ export default function HomePage() {
 
                 <h1 className='pb-6 text-2xl font-bold'>Popular Courses</h1>
 
-                <div className='flex flex-wrap justify-start gap-6'>
-                    {courses.map((course, index) => (
-                        <CourseCard
-                            key={index}
-                            courseName={course.courseName}
-                            instructor={course.instructor}
-                            venue={course.venue}
-                            category={course.category}
-                            schedule={course.schedule}
-                        />
-                    ))}
-                </div>
+                <CourseList />
 
                 <h2 className='pb-6 pt-4 text-3xl font-bold text-center'>Find Your Jobs By Category</h2>
 
@@ -174,7 +132,6 @@ export default function HomePage() {
                         />
                     ))}
                 </div>
-
 
             </div>
         </div>
