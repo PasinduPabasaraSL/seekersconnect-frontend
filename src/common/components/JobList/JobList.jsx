@@ -65,18 +65,18 @@ const jobs = [
         time: "2 hours ago",
         jobType: "Full-time"
     }
-]; // api call
+];
 
 const JobList = () => {
     return (
-        <div>
+        <div className="h-[500px] overflow-y-auto p-4 rounded-lg shadow-md bg-neutral-100">
             {jobs.map((job, index) => (
                 <JobDetailCard
                     key={index}
                     title={job.title}
                     company={job.company}
                     location={job.location}
-                    type={job.type}
+                    type={job.jobType}
                     time={job.time}
                 />
             ))}
