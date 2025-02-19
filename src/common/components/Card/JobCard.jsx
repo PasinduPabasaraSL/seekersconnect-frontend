@@ -1,9 +1,20 @@
-import { Briefcase, MapPin, Clock } from 'lucide-react';
+import { Briefcase, MapPin, Clock, Share2 } from 'lucide-react';
 import MyButton from "../MyButton/MyButton";
 
 // JobCard Component
 function JobCard(props) {
     const { title, company, location, type, time, width } = props;
+
+    const handleShare = async () => {
+        const jobDetails = window.location.href;
+        try {
+            await navigator.clipboard.writeText(jobDetails);
+            alert("Job link copied to clipboard!");
+        } catch (error) {
+            console.error("Clipboard copy failed:", error);
+            alert("Failed to copy link. Please try manually.");
+        }
+    };
 
     return (
         <div
@@ -26,9 +37,15 @@ function JobCard(props) {
                 </div>
             </div>
 
-            <div className="flex items-center text-xs text-gray-400">
-                <Clock size={14} />
-                <span className="ml-1">{time}</span>
+            <div className="flex justify-between items-center text-xs text-gray-400">
+                <div className="flex items-center">
+                    <Clock size={14} />
+                    <span className="ml-1">{time}</span>
+                </div>
+                <button onClick={handleShare} className="flex items-center text-blue-500 hover:text-blue-700">
+                    <Share2 size={16} className="mr-1" />
+                    <span>Share</span>
+                </button>
             </div>
 
             {/* Apply Button */}
@@ -64,7 +81,7 @@ function JobDetailCard(props) {
                         </span>
                     </div>
                 </div>
-                <button className="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-200 transition-colors">
+                <button className="bg-blue-100 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-200 transition-colors cursor-pointer">
                     Apply Now
                 </button>
             </div>
@@ -72,5 +89,4 @@ function JobDetailCard(props) {
     );
 }
 
-// Exporting both components
 export { JobCard, JobDetailCard };

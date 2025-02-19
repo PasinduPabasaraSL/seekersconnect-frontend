@@ -4,7 +4,7 @@ export default function CourseCard(props) {
     const { courseName, instructor, venue, category, schedule } = props;
 
     return (
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-4 w-75 hover:scale-105 transform transition duration-300 hover:shadow-2xl">
+        <div className="bg-white rounded-lg shadow-lg p-6 mb-4 w-75 hover:scale-105 transform transition duration-300 hover:shadow-2xl h-65">
             <div className="flex flex-col justify-between mb-4">
                 <div className="mb-2">
                     <div className="text-xl font-semibold text-gray-800 hover:text-[#00cec9] transition duration-300">
