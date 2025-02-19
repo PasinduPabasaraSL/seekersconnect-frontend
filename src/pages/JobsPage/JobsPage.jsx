@@ -3,6 +3,10 @@ import JobList from '../../common/components/JobList/JobList';
 import SearchBox from '../../common/components/SearchBox/SearchBox';
 
 export default function JobsPage() {
+
+    const jobTypes = ['Full-time', 'Part-time', 'Contract', 'Remote', 'Internship', 'Hybrid'];
+    const jobCategories = ['Software Engineering', 'Data Science', 'Design', 'Marketing', 'Finance', 'Human Resources'];
+
     return (
         <div className="min-h-screen bg-[#f5f6fa] mt-15">
             <div className="max-w-6xl mx-auto px-4 py-8">
@@ -23,7 +27,7 @@ export default function JobsPage() {
                             {/* Job Type Filter */}
                             <div className="mb-6">
                                 <h3 className="font-medium mb-3">Job Type</h3>
-                                {['Full-time', 'Part-time', 'Contract', 'Remote'].map((type) => (
+                                {jobTypes.map((type) => (
                                     <div key={type} className="flex items-center mb-2">
                                         <input
                                             type="checkbox"
@@ -38,7 +42,7 @@ export default function JobsPage() {
                             </div>
 
                             {/* Experience Level Filter */}
-                            <div>
+                            <div className="mb-6">
                                 <h3 className="font-medium mb-3">Experience Level</h3>
                                 {['Entry Level', 'Mid Level', 'Senior', 'Executive'].map((level) => (
                                     <div key={level} className="flex items-center mb-2">
@@ -49,6 +53,23 @@ export default function JobsPage() {
                                         />
                                         <label htmlFor={level.toLowerCase().replace(' ', '-')} className="ml-2 text-gray-700">
                                             {level}
+                                        </label>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Job Category Filter */}
+                            <div>
+                                <h3 className="font-medium mb-3">Job Category</h3>
+                                {jobCategories.map((category) => (
+                                    <div key={category} className="flex items-center mb-2">
+                                        <input
+                                            type="checkbox"
+                                            id={category.toLowerCase().replace(' ', '-')}
+                                            className="w-4 h-4 text-black rounded border-gray-300 focus:ring-black"
+                                        />
+                                        <label htmlFor={category.toLowerCase().replace(' ', '-')} className="ml-2 text-gray-700">
+                                            {category}
                                         </label>
                                     </div>
                                 ))}
