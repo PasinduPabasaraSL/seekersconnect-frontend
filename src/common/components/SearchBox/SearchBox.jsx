@@ -1,7 +1,7 @@
 import MyButton from "../MyButton/MyButton";
 import React, { useState } from 'react';
 
-export default function SearchBox() {
+export default function SearchBox(props) {
 
     const [searchTerm, setSearchTerm] = useState('');
     const [location, setLocation] = useState('');
@@ -52,7 +52,7 @@ export default function SearchBox() {
                     </div>
                 </div>
 
-                <MyButton name="Search Jobs" txtColor="white" backgroundColor="black" height="54px" radius="10px" />
+                <MyButton name="Search Jobs" txtColor="white" backgroundColor={props.bgColor} height="54px" radius="10px" />
             </div>
         </div>
     );
