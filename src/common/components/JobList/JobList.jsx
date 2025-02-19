@@ -65,7 +65,7 @@ const jobs = [
         time: "2 hours ago",
         jobType: "Full-time"
     }
-];
+]; // api call
 
 const JobList = () => {
     return (
