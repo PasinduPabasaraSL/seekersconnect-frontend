@@ -14,10 +14,10 @@ const NavBar = () => {
                     {/* Logo */}
                     <div className="flex items-center space-x-8">
                         <Link to="/">
-                            <span className="text-2xl font-bold text-[#14a800]">
-                                SeekersConnect
+                            <span className="text-2xl font-bold text-black">
+                                Seekers
                             </span>
-
+                            <span className="text-2xl font-bold text-black">Connect</span>
                         </Link>
 
                         {/* Desktop Menu - Left Side */}
@@ -52,7 +52,7 @@ const NavBar = () => {
                     {/* Desktop Menu - Right Side */}
                     <div className="hidden lg:flex items-center space-x-8">
                         <li className="text-gray-600 hover:text-[#14a800] list-none cursor-pointer">Sign In</li>
-                        <MyButton name="Post a Job" txtColor="white" backgroundColor="#14a800" height="35px" radius="24px" />
+                        <MyButton name="Post a Job" txtColor="white" backgroundColor="black" height="35px" radius="24px" />
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -71,20 +71,21 @@ const NavBar = () => {
             <div className={`lg:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
                 } overflow-hidden bg-white border-t border-gray-200`}>
                 <div className="px-4 py-2 space-y-1">
+                    <Link to="/"> <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Home</li> </Link>
                     <div className="py-2">
                         <button className="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md flex justify-between items-center">
                             Find Talent
                             <span className="text-xs">▼</span>
                         </button>
                         <div className="pl-4 space-y-1">
-                            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Become an Instructor</a>
-                            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Start Learning</a>
-                            <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">CV Booster</a>
+                            <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md cursor-pointer">Become an Instructor</li>
+                            <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md cursor-pointer">Start Learning</li>
+                            <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md cursor-pointer">CV Booster</li>
                         </div>
                     </div>
-                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Find Job</a>
-                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Why SeekersConnect</a>
-                    <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Sign In</a>
+                    <Link to="/jobs"> <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Find Job</li> </Link>
+                    <Link to="/why"> <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Why SeekersConnect</li> </Link>
+                    <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Sign In</li>
                     <div className="pt-2">
                         <button className="w-full bg-[#14a800] text-white px-6 py-2 rounded-full hover:bg-[#3c8224] transition-colors">
                             Post a Job
