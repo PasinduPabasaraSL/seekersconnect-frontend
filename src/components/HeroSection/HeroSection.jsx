@@ -16,7 +16,7 @@ export default function HeroSection() {
                     </p>
 
                     {/* Search Box */}
-                    <SearchBox />
+                    <SearchBox bgColor="black" />
                 </div>
             </div>
         </div>

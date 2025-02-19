@@ -12,7 +12,7 @@ export default function JobsPage() {
             <div className="max-w-6xl mx-auto px-4 py-8">
                 {/* Search Box */}
                 <div className='mb-10 -mt-8'>
-                    <SearchBox />
+                    <SearchBox bgColor="#1B1B1B" />
                 </div>
                 {/* Main Content */}
                 <div className="flex flex-col lg:flex-row gap-8">

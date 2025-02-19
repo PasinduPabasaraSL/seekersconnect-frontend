@@ -123,14 +123,16 @@ export default function HomePage() {
 
                 <h2 className='pb-6 pt-4 text-3xl font-bold text-center'>Find Your Jobs By Category</h2>
 
-                <div className='flex flex-wrap justify-start gap-6'>
-                    {categories.map((category, index) => (
-                        <CategoryCard
-                            key={index}
-                            title={category.title}
-                            jobsCount={category.jobsCount}
-                        />
-                    ))}
+                <div className='ml-14' >
+                    <div className='flex flex-wrap justify-start gap-6'>
+                        {categories.map((category, index) => (
+                            <CategoryCard
+                                key={index}
+                                title={category.title}
+                                jobsCount={category.jobsCount}
+                            />
+                        ))}
+                    </div>
                 </div>
 
             </div>
