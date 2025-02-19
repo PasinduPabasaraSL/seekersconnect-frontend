@@ -2,6 +2,7 @@ import React from 'react';
 import { Briefcase, MapPin, Clock } from 'lucide-react';
 import MyButton from '../../common/components/MyButton/MyButton';
 import CoverImage from '../../assets/cover.png';
+import { Link } from 'react-router';
 
 const WhySeekersConnect = () => {
     return (
@@ -15,7 +16,16 @@ const WhySeekersConnect = () => {
                     SeekersConnect is your go-to job portal and skill development platform designed to help you build a better career. Whether you're looking for your first job or advancing to the next level, SeekersConnect offers tools that make the process easier, faster, and more personalized.
                 </p>
                 <div className="mt-8">
-                    <MyButton name="Get Started" txtColor="white" backgroundColor="#14a800" height="50px" radius="24px" width="150px" />
+                    <Link to="/sign-up">
+                        <MyButton
+                            name="Get Started"
+                            txtColor="white"
+                            backgroundColor="#14a800"
+                            height="50px"
+                            radius="24px"
+                            width="150px"
+                        />
+                    </Link>
                 </div>
             </section>
 
@@ -116,7 +126,16 @@ const WhySeekersConnect = () => {
                         Join SeekersConnect today and begin your journey toward career success!
                     </p>
                     <div>
-                        <MyButton name="Join Now" txtColor="white" backgroundColor="#C60C30" height="50px" radius="24px" width="150px" />
+                        <Link to="/sign-up">
+                            <MyButton
+                                name="Join Now"
+                                txtColor="white"
+                                backgroundColor="#C60C30"
+                                height="50px"
+                                radius="24px"
+                                width="150px"
+                            />
+                        </Link>
                     </div>
                 </section>
             </div>
