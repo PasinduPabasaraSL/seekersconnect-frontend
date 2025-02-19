@@ -1,41 +1,15 @@
-import React, { useState } from 'react';
-import { Search, MapPin, Filter } from 'lucide-react';
-import { JobDetailCard } from '../../common/components/Card/JobCard';
-import MyButton from '../../common/components/MyButton/MyButton';
+import { Filter } from 'lucide-react';
 import JobList from '../../common/components/JobList/JobList';
+import SearchBox from '../../common/components/SearchBox/SearchBox';
 
 export default function JobsPage() {
     return (
         <div className="min-h-screen bg-[#f5f6fa] mt-15">
             <div className="max-w-6xl mx-auto px-4 py-8">
-                <div className="bg-white rounded-xl shadow-md p-6 mb-8">
-                    <div className="flex flex-col md:flex-row gap-4">
-                        <div className="flex-1 relative">
-                            <Search className="absolute left-3 top-3 text-gray-400" size={20} />
-                            <input
-                                type="text"
-                                placeholder="Job title or keywords"
-                                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                            />
-                        </div>
-                        <div className="flex-1 relative">
-                            <MapPin className="absolute left-3 top-3 text-gray-400" size={20} />
-                            <input
-                                type="text"
-                                placeholder="Location"
-                                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                            />
-                        </div>
-                        <MyButton
-                            name="Search"
-                            width="150px"
-                            backgroundColor="black"
-                            radius="20px"
-                            txtColor="white"
-                        />
-                    </div>
+                {/* Search Box */}
+                <div className='mb-10 -mt-8'>
+                    <SearchBox />
                 </div>
-
                 {/* Main Content */}
                 <div className="flex flex-col lg:flex-row gap-8">
                     {/* Filters Sidebar */}
