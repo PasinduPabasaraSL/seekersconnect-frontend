@@ -117,14 +117,14 @@ export default function HomePage() {
                     ))}
                 </div>
 
-                <h1 className='pb-6 text-2xl font-bold'>Popular Courses</h1>
+                <h1 className='pb-3 mt-10 text-2xl font-bold'>Popular Courses</h1>
 
                 <CourseList />
 
-                <h2 className='pb-6 pt-4 text-3xl font-bold text-center'>Find Your Jobs By Category</h2>
+                <h2 className='pb-6 pt-4 text-3xl font-bold text-center mt-11'>Find Your Jobs By Category</h2>
 
                 <div className='ml-14' >
-                    <div className='flex flex-wrap justify-start gap-6'>
+                    <div className='flex flex-wrap justify-start gap-6 mb-12'>
                         {categories.map((category, index) => (
                             <CategoryCard
                                 key={index}

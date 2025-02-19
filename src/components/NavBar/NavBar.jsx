@@ -51,7 +51,9 @@ const NavBar = () => {
 
                     {/* Desktop Menu - Right Side */}
                     <div className="hidden lg:flex items-center space-x-8">
-                        <li className="text-gray-600 hover:text-[#14a800] list-none cursor-pointer">Sign In</li>
+                        <Link to="/sign-in">
+                            <li className="text-gray-600 hover:text-[#14a800] list-none cursor-pointer">Sign In</li>
+                        </Link>
                         <MyButton name="Post a Job" txtColor="white" backgroundColor="black" height="35px" radius="24px" />
                     </div>
 
