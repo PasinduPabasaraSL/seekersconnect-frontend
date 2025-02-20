@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userType, setUserType] = useState('jobseeker');
+    const [userType, setUserType] = useState('job seeker');
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState(null);
 
@@ -16,7 +16,9 @@ export default function SignIn() {
         setError(null);
 
         try {
+            // console.log(userType)
             const formattedUserType = userType.toUpperCase().replace(/\s+/g, '_');
+            // console.log(formattedUserType);
 
             const response = await axios.post('http://localhost:8080/api/v1/user/login', {
                 username: email,
@@ -34,7 +36,7 @@ export default function SignIn() {
                 case 'employer':
                     // Navigate to employer dashboard
                     break;
-                case 'jobseeker':
+                case 'job seeker':
                     // Navigate to job seeker dashboard
                     break;
                 case 'trainer':
@@ -72,7 +74,7 @@ export default function SignIn() {
                                 onChange={(e) => setUserType(e.target.value)}
                                 className="pl-10 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             >
-                                <option value="jobseeker">Job Seeker</option>
+                                <option value="job seeker">Job Seeker</option>
                                 <option value="employer">Employer</option>
                                 <option value="admin">Admin</option>
                                 <option value="trainer">Trainer</option>
