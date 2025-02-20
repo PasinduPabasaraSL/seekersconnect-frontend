@@ -15,10 +15,14 @@ export default function SignIn() {
         e.preventDefault();
         setError(null);
 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            setError('Please enter a valid email address.');
+            return;
+        }
+
         try {
-            // console.log(userType)
             const formattedUserType = userType.toUpperCase().replace(/\s+/g, '_');
-            // console.log(formattedUserType);
 
             const response = await axios.post('http://localhost:8080/api/v1/user/login', {
                 username: email,
@@ -43,12 +47,28 @@ export default function SignIn() {
                     // Navigate to trainer dashboard
                     break;
                 default:
-                // Default dashboard
+                    // Default dashboard
+                    break;
             }
 
             alert('Login successful!');
+
+            setEmail('');
+            setPassword('');
+            setUserType('job seeker');
+
         } catch (error) {
-            setError(error.response ? error.response.data.message : 'Login failed! Please check your credentials.');
+            if (error.response) {
+                setError(error.response.data.message || 'An error occurred. Please try again.');
+            } else if (error.request) {
+                setError('Network error. Please check your internet connection.');
+            } else {
+                setError('An unexpected error occurred. Please try again.');
+            }
+
+            setEmail('');
+            setPassword('');
+            setUserType('job seeker');
         }
     };
 
@@ -87,7 +107,7 @@ export default function SignIn() {
                                 <Mail className="h-5 w-5 text-gray-400" />
                             </div>
                             <input
-                                type="textBox"
+                                type="email"
                                 placeholder="Email address"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
