@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { User, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { Link } from 'react-router';
+import axios from 'axios';
 
 export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
@@ -8,8 +9,9 @@ export default function SignUp() {
         fullName: '',
         email: '',
         password: '',
-        userType: 'jobseeker'
+        userType: 'job seeker'
     });
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -19,10 +21,71 @@ export default function SignUp() {
         }));
     };
 
-    const handleSubmit = (e) => {
+    // Validate email format
+    const isValidEmail = (email) => {
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return regex.test(email);
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission
-        console.log('Form submitted:', formData);
+
+        // Check if the email is valid
+        if (!isValidEmail(formData.email)) {
+            setErrorMessage('Please enter a valid email address.');
+            return;
+        }
+
+        try {
+
+            const formattedUserType = userType.toUpperCase().replace(/\s+/g, '_');
+
+            const response = await axios.post('http://localhost:8080/api/v1/user/register', {
+                username: formData.fullName,
+                password: formData.password,
+                role: formattedUserType
+            });
+
+            console.log('Registration successful:', response.data);
+            alert("Registration successful")
+
+            setFormData({
+                fullName: '',
+                email: '',
+                password: '',
+                userType: 'job seeker'
+            });
+
+            // Redirect based on user type
+            switch (userType) {
+                case 'admin':
+                    // Navigate to admin dashboard
+                    break;
+                case 'employer':
+                    // Navigate to employer dashboard
+                    break;
+                case 'job seeker':
+                    // Navigate to job seeker dashboard
+                    break;
+                case 'trainer':
+                    // Navigate to trainer dashboard
+                    break;
+                default:
+                    // Default dashboard
+                    break;
+            }
+
+        } catch (error) {
+            setErrorMessage('Registration failed. Please try again.');
+            console.error('Error during registration:', error);
+
+            setFormData({
+                fullName: '',
+                email: '',
+                password: '',
+                userType: 'job seeker'
+            });
+        }
     };
 
     return (
@@ -37,6 +100,7 @@ export default function SignUp() {
 
                 <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                     <div className="space-y-4">
+                        {/* Full Name Input */}
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <User className="h-5 w-5 text-gray-400" />
@@ -52,6 +116,7 @@ export default function SignUp() {
                             />
                         </div>
 
+                        {/* Email Input */}
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <Mail className="h-5 w-5 text-gray-400" />
@@ -67,6 +132,7 @@ export default function SignUp() {
                             />
                         </div>
 
+                        {/* Account Type Select */}
                         <div className="relative">
                             <label className="block text-sm font-medium text-gray-700 mb-1">
                                 Account Type
@@ -77,12 +143,13 @@ export default function SignUp() {
                                 onChange={handleInputChange}
                                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150"
                             >
-                                <option value="jobseeker">Job Seeker</option>
+                                <option value="job seeker">Job Seeker</option>
                                 <option value="employer">Employer</option>
                                 <option value="trainer">Trainer</option>
                             </select>
                         </div>
 
+                        {/* Password Input */}
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <Lock className="h-5 w-5 text-gray-400" />
@@ -110,6 +177,12 @@ export default function SignUp() {
                         </div>
                     </div>
 
+                    {/* Error Message */}
+                    {errorMessage && (
+                        <p className="text-red-500 text-sm text-center">{errorMessage}</p>
+                    )}
+
+                    {/* Terms and Conditions Checkbox */}
                     <div className="flex items-center">
                         <input
                             id="terms"
@@ -130,6 +203,7 @@ export default function SignUp() {
                         </label>
                     </div>
 
+                    {/* Submit Button */}
                     <div>
                         <button
                             type="submit"
@@ -139,6 +213,7 @@ export default function SignUp() {
                         </button>
                     </div>
 
+                    {/* Sign In Link */}
                     <div className="text-center text-sm">
                         <p className="text-gray-600">
                             Already have an account?{' '}
