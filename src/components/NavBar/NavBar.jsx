@@ -38,7 +38,9 @@ const NavBar = () => {
                                         onMouseEnter={() => setShowTalentDropdown(true)}
                                         onMouseLeave={() => setShowTalentDropdown(false)}
                                     >
-                                        <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] cursor-pointer">Become an Instructor</li>
+                                        <Link to="/sign-up">
+                                            <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] cursor-pointer">Become an Instructor</li>
+                                        </Link>
                                         <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] cursor-pointer">Start Learning</li>
                                         <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] cursor-pointer">CV Booster</li>
                                     </div>
@@ -80,7 +82,9 @@ const NavBar = () => {
                             <span className="text-xs">▼</span>
                         </button>
                         <div className="pl-4 space-y-1">
-                            <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md cursor-pointer">Become an Instructor</li>
+                            <Link to="/sign-up">
+                                <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md cursor-pointer">Become an Instructor</li>
+                            </Link>
                             <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md cursor-pointer">Start Learning</li>
                             <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md cursor-pointer">CV Booster</li>
                         </div>
