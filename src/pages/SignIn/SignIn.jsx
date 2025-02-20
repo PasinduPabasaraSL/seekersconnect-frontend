@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Lock, Eye, EyeOff, UserCircle } from 'lucide-react';
 import axios from 'axios';
 import MyButton from '../../common/components/MyButton/MyButton';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 export default function SignIn() {
     const [email, setEmail] = useState('');
@@ -16,16 +16,18 @@ export default function SignIn() {
         setError(null);
 
         try {
+            const formattedUserType = userType.toUpperCase().replace(/\s+/g, '_');
+
             const response = await axios.post('http://localhost:8080/api/v1/user/login', {
                 username: email,
                 password: password,
-                role: userType
+                role: formattedUserType
             });
 
             console.log('Login successful:', response.data);
-            
+
             // Redirect based on user type
-            switch(userType) {
+            switch (userType) {
                 case 'admin':
                     // Navigate to admin dashboard
                     break;
@@ -39,9 +41,9 @@ export default function SignIn() {
                     // Navigate to trainer dashboard
                     break;
                 default:
-                    // Default dashboard
+                // Default dashboard
             }
-            
+
             alert('Login successful!');
         } catch (error) {
             setError(error.response ? error.response.data.message : 'Login failed! Please check your credentials.');
@@ -72,7 +74,7 @@ export default function SignIn() {
                             >
                                 <option value="jobseeker">Job Seeker</option>
                                 <option value="employer">Employer</option>
-                                <option value="admin">Administrator</option>
+                                <option value="admin">Admin</option>
                                 <option value="trainer">Trainer</option>
                             </select>
                         </div>
@@ -83,7 +85,7 @@ export default function SignIn() {
                                 <Mail className="h-5 w-5 text-gray-400" />
                             </div>
                             <input
-                                type="email"
+                                type="textBox"
                                 placeholder="Email address"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
