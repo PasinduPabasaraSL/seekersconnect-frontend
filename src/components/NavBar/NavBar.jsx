@@ -87,7 +87,9 @@ const NavBar = () => {
                     </div>
                     <Link to="/jobs"> <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Find Job</li> </Link>
                     <Link to="/why"> <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Why SeekersConnect</li> </Link>
-                    <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Sign In</li>
+                    <Link to="/sign-in">
+                        <li className="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-[#14a800] rounded-md">Sign In</li>
+                    </Link>
                     <div className="pt-2">
                         <button className="w-full bg-[#14a800] text-white px-6 py-2 rounded-full hover:bg-[#3c8224] transition-colors">
                             Post a Job
