@@ -69,7 +69,7 @@ const jobs = [
 
 const JobList = () => {
     return (
-        <div className="h-[1000px] overflow-y-auto p-4 rounded-lg shadow-md bg-neutral-100">
+        <div className="h-[1048px] overflow-y-auto p-4 rounded-lg shadow-md bg-neutral-100">
             {jobs.map((job, index) => (
                 <JobDetailCard
                     key={index}
