@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Mail, Lock, Eye, EyeOff, UserCircle } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, UserCircle, X } from 'lucide-react';
 import axios from 'axios';
 import MyButton from '../../common/components/MyButton/MyButton';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 export default function SignIn() {
     const [email, setEmail] = useState('');
@@ -10,6 +10,11 @@ export default function SignIn() {
     const [userType, setUserType] = useState('job seeker');
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
+
+    const handleClose = () => {
+        navigate("/");
+    }
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -47,7 +52,7 @@ export default function SignIn() {
                     // Navigate to trainer dashboard
                     break;
                 default:
-                    // Default dashboard
+                    navigate('/');
                     break;
             }
 
@@ -74,7 +79,14 @@ export default function SignIn() {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 mt-8">
-            <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-xl shadow-lg">
+            <div className="relative max-w-md w-full space-y-8 p-8 bg-white rounded-xl shadow-lg">
+                {/* Close Button */}
+                <button
+                    onClick={handleClose}
+                    className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 cursor-pointer"
+                >
+                    <X className="w-6 h-6" />
+                </button>
                 <div className="text-center">
                     <h2 className="text-3xl font-bold text-gray-900">Welcome back</h2>
                     <p className="mt-2 text-sm text-gray-600">Sign in to continue your journey</p>
