@@ -39,9 +39,6 @@ export default function SignIn() {
 
             // Redirect based on user type
             switch (userType) {
-                case 'admin':
-                    // Navigate to admin dashboard
-                    break;
                 case 'employer':
                     // Navigate to employer dashboard
                     break;
@@ -108,7 +105,6 @@ export default function SignIn() {
                             >
                                 <option value="job seeker">Job Seeker</option>
                                 <option value="employer">Employer</option>
-                                <option value="admin">Admin</option>
                                 <option value="trainer">Trainer</option>
                             </select>
                         </div>
