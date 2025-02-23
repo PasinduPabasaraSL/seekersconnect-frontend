@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail, Lock, Eye, EyeOff, UserCircle, X } from 'lucide-react';
 import axios from 'axios';
 import MyButton from '../../common/components/MyButton/MyButton';
-import { Link, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
+import { useAuth } from '../../context/AuthContext.jsx';
 
 export default function SignIn() {
     const [email, setEmail] = useState('');
@@ -11,6 +12,12 @@ export default function SignIn() {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+
+    const { login, user } = useAuth();
+
+    useEffect(() => {
+        if (user) navigate('/admin/dashboard');
+    }, [user, navigate]);
 
     const handleClose = () => {
         navigate("/");
@@ -27,27 +34,24 @@ export default function SignIn() {
         }
 
         try {
-            const formattedUserType = userType.toUpperCase().replace(/\s+/g, '_');
-
             const response = await axios.post('http://localhost:8080/api/v1/user/login', {
                 username: email,
                 password: password,
-                role: formattedUserType
+                role: "ADMIN"
             });
 
             console.log('Login successful:', response.data);
             alert('Login successful!');
+
+            const token = response.data.token; // Assuming the backend returns a JWT token
+            localStorage.setItem("authToken", token); // Store token in localStorage
+
+            login(response.data); // Store user data in context
+
             navigate('/admin/dashboard');
 
         } catch (error) {
-            if (error.response) {
-                setError(error.response.data.message || 'An error occurred. Please try again.');
-            } else if (error.request) {
-                setError('Network error. Please check your internet connection.');
-            } else {
-                setError('An unexpected error occurred. Please try again.');
-            }
-
+            setError(error.response?.data?.message || 'An error occurred. Please try again.');
             setEmail('');
             setPassword('');
             setUserType('Admin');

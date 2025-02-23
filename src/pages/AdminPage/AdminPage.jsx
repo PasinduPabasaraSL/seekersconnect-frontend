@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import {
     Users,
     Briefcase,
-    GraduationCap,  // Changed from Graduation
-    Building,       // Changed from Building2
+    GraduationCap,
+    Building,
     BookOpen,
     BarChart3,
     Bell,
     Settings,
     MessageSquare,
     Search,
-    Plus,
-    Filter,
     ChevronDown,
     X,
     Menu
 } from 'lucide-react';
+import { useAuth } from "../../context/AuthContext.jsx";
+import { useNavigate } from 'react-router';
 
 const AdminDashboard = () => {
     const [activeTab, setActiveTab] = useState('overview');
@@ -41,6 +41,14 @@ const AdminDashboard = () => {
         { id: 'support', label: 'Support', icon: MessageSquare }
     ];
 
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        navigate("/");
+    };
+
     return (
         <div className="flex h-screen bg-gray-50">
             {/* Sidebar - Desktop */}
@@ -60,8 +68,8 @@ const AdminDashboard = () => {
                                 <button
                                     key={item.id}
                                     className={`flex items-center px-3 py-2 text-sm font-medium rounded-md w-full ${activeTab === item.id
-                                            ? 'bg-blue-50 text-blue-600'
-                                            : 'text-gray-700 hover:bg-gray-50'
+                                        ? 'bg-blue-50 text-blue-600'
+                                        : 'text-gray-700 hover:bg-gray-50'
                                         }`}
                                     onClick={() => setActiveTab(item.id)}
                                 >
@@ -99,8 +107,8 @@ const AdminDashboard = () => {
                                     <button
                                         key={item.id}
                                         className={`flex items-center px-3 py-2 text-base font-medium rounded-md w-full ${activeTab === item.id
-                                                ? 'bg-blue-50 text-blue-600'
-                                                : 'text-gray-700 hover:bg-gray-50'
+                                            ? 'bg-blue-50 text-blue-600'
+                                            : 'text-gray-700 hover:bg-gray-50'
                                             }`}
                                         onClick={() => {
                                             setActiveTab(item.id);
@@ -167,6 +175,7 @@ const AdminDashboard = () => {
                                             <a
                                                 href="#signout"
                                                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                                onClick={handleLogout}
                                             >
                                                 Sign out
                                             </a>
@@ -192,8 +201,8 @@ const AdminDashboard = () => {
                                         <div className="font-medium text-gray-500">{stat.title}</div>
                                         <div
                                             className={`text-sm ${stat.change.startsWith('+')
-                                                    ? 'text-green-600'
-                                                    : 'text-red-600'
+                                                ? 'text-green-600'
+                                                : 'text-red-600'
                                                 }`}
                                         >
                                             {stat.change}
