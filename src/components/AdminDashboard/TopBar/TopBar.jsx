@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from "../../../context/AuthContext.jsx";
 import { useNavigate } from 'react-router';
 import {
@@ -6,12 +6,19 @@ import {
     Search,
     ChevronDown,
 } from 'lucide-react';
+import { jwtDecode } from "jwt-decode";
 
 export default function TopBar() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [admin, setAdmin] = useState("Admin");
 
-    const { logout } = useAuth();
+    const { logout, user } = useAuth();
     const navigate = useNavigate();
+    const decoded = jwtDecode(user);
+
+    useEffect(() => {
+        setAdmin(decoded.sub);
+    }, [user]);
 
     const handleLogout = () => {
         logout();
@@ -23,7 +30,7 @@ export default function TopBar() {
             <div className="flex items-center justify-between px-4 h-full">
                 <div className="flex-1 flex">
                     <div className="text-[22px] font-serif">
-                        Welcome Back Admin
+                        Welcome Back <span className="text-red-700 pl-2">{admin}</span>
                     </div>
                 </div>
 

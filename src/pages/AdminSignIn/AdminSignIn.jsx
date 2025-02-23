@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Lock, Eye, EyeOff, UserCircle, X } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, X } from 'lucide-react';
 import axios from 'axios';
 import MyButton from '../../common/components/MyButton/MyButton';
 import { useNavigate } from 'react-router';
@@ -8,7 +8,6 @@ import { useAuth } from '../../context/AuthContext.jsx';
 export default function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [userType, setUserType] = useState('Admin');
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -40,21 +39,16 @@ export default function SignIn() {
                 role: "ADMIN"
             });
 
-            console.log('Login successful:', response.data);
+            console.log('Login successful:');
             alert('Login successful!');
 
-            const token = response.data.token; // Assuming the backend returns a JWT token
-            localStorage.setItem("authToken", token); // Store token in localStorage
-
-            login(response.data); // Store user data in context
+            login(response.data)
 
             navigate('/admin/dashboard');
 
         } catch (error) {
+            console.log(error);
             setError(error.response?.data?.message || 'An error occurred. Please try again.');
-            setEmail('');
-            setPassword('');
-            setUserType('Admin');
         }
     };
 
