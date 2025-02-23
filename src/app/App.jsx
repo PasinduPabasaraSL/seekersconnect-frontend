@@ -1,8 +1,6 @@
 import './App.css'
 import HomePage from '../pages/HomePage/HomePage'
 import JobPage from '../pages/JobsPage/JobsPage'
-import NavBar from '../components/NavBar/NavBar'
-import Footer from '../components/Footer/Footer'
 import WhySeekersConnect from '../pages/WhySeekersConnect/WhySeekersConnect'
 import { BrowserRouter as Router, Route, Routes } from "react-router"
 import SignUp from '../pages/SignUp/SignUp'
@@ -11,6 +9,7 @@ import AdminPage from '../pages/AdminPage/AdminPage'
 import AdminSignIn from '../pages/AdminSignIn/AdminSignIn'
 import { AuthProvider } from '../context/AuthContext.jsx'
 import ProtectedRoute from '../common/components/ProtectedRoute/ProtectedRoute'
+import NotFound from '../pages/NotFound/NotFound.jsx'
 
 function App() {
 
@@ -18,7 +17,6 @@ function App() {
     <div>
       <AuthProvider>
         <Router>
-          {/* <NavBar /> */}
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/jobs" element={<JobPage />} />
@@ -31,8 +29,8 @@ function App() {
                 <AdminPage />
               </ProtectedRoute>
             } />
+            <Route path="*" element={<NotFound />} />
           </Routes>
-          {/* <Footer /> */}
         </Router>
       </AuthProvider>
     </div>
