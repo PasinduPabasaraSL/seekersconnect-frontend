@@ -2,6 +2,8 @@ import { JobCard } from '../../common/components/Card/JobCard.jsx';
 import HeroSection from '../../components/HeroSection/HeroSection.jsx';
 import CategoryCard from '../../common/components/Card/CategoryCard.jsx';
 import CourseList from '../../common/components/CourseList/CourseList.jsx';
+import NavBar from '../../components/NavBar/NavBar.jsx';
+import Footer from '../../components/Footer/Footer.jsx';
 
 export default function HomePage() {
     const jobs = [
@@ -100,6 +102,7 @@ export default function HomePage() {
 
     return (
         <div>
+            <NavBar />
             <HeroSection />
             <div className="p-6 bg-[#f5f6fa]">
                 <h1 className='pb-6 text-2xl font-bold'>Recent Jobs</h1>
@@ -136,6 +139,7 @@ export default function HomePage() {
                 </div>
 
             </div>
+            <Footer />
         </div>
     );
 }

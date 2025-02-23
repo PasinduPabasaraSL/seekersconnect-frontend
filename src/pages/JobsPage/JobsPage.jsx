@@ -1,6 +1,8 @@
 import { Filter } from 'lucide-react';
 import JobList from '../../common/components/JobList/JobList';
 import SearchBox from '../../common/components/SearchBox/SearchBox';
+import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Footer';
 
 export default function JobsPage() {
 
@@ -9,6 +11,7 @@ export default function JobsPage() {
 
     return (
         <div className="min-h-screen bg-[#f5f6fa] mt-15">
+            <NavBar />
             <div className="max-w-6xl mx-auto px-4 py-8">
                 {/* Search Box */}
                 <div className='mb-10 -mt-8'>
@@ -84,6 +87,7 @@ export default function JobsPage() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }
