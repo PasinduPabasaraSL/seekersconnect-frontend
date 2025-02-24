@@ -1,35 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from "../../../context/AuthContext.jsx";
-import { useNavigate } from 'react-router';
-import {
-    Bell,
-    Search,
-    ChevronDown,
-} from 'lucide-react';
+import { Bell } from 'lucide-react';
 import { jwtDecode } from "jwt-decode";
+import Profile from '../../../common/components/Profile/Profile.jsx';
 
 export default function TopBar() {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [admin, setAdmin] = useState("Admin");
 
-    const { logout, user } = useAuth();
-    const navigate = useNavigate();
+    const { user } = useAuth();
     const decoded = jwtDecode(user);
 
     useEffect(() => {
         setAdmin(decoded.sub);
     }, [user]);
 
-    const handleLogout = () => {
-        logout();
-        navigate("/");
-    };
-
     return (
         <div className="sticky top-0 z-10 flex-shrink-0 h-16 bg-white border-b border-gray-200">
             <div className="flex items-center justify-between px-4 h-full">
                 <div className="flex-1 flex">
-                    <div className="text-[22px] font-serif">
+                    <div className="text-[22px] font-serif pointer-events-none">
                         Welcome Back <span className="text-red-700 pl-2">{admin}</span>
                     </div>
                 </div>
@@ -39,41 +28,8 @@ export default function TopBar() {
                         <Bell className="h-6 w-6" />
                     </button>
 
-                    <div className="relative">
-                        <button
-                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                            className="flex items-center space-x-2 text-sm text-gray-700 hover:text-gray-900 focus:outline-none"
-                        >
-                            <div className="h-8 w-8 rounded-full bg-gray-200" />
-                            <ChevronDown className="h-4 w-4" />
-                        </button>
-
-                        {isDropdownOpen && (
-                            <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                                <div className="py-1">
-                                    <a
-                                        href="#profile"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                    >
-                                        Your Profile
-                                    </a>
-                                    <a
-                                        href="#settings"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                    >
-                                        Settings
-                                    </a>
-                                    <a
-                                        href="#signout"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                        onClick={handleLogout}
-                                    >
-                                        Sign out
-                                    </a>
-                                </div>
-                            </div>
-                        )}
-                    </div>
+                    {/* Profile */}
+                    <Profile />
                 </div>
             </div>
         </div>
