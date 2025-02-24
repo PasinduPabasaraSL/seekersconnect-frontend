@@ -4,26 +4,37 @@ export default function CourseCard(props) {
     const { courseName, instructor, venue, category, schedule } = props;
 
     return (
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-4 w-75 hover:scale-105 transform transition duration-300 hover:shadow-2xl h-65">
-            <div className="flex flex-col justify-between mb-4">
-                <div className="mb-2">
-                    <div className="text-xl font-semibold text-gray-800 hover:text-[#00cec9] transition duration-300">
-                        {courseName}
+        <div className="bg-white rounded-xl shadow-md p-6 w-full max-w-[300px] h-[280px] hover:shadow-xl hover:scale-[1.03] transform transition-all duration-300 border border-gray-100">
+            <div className="flex flex-col h-full justify-between">
+                {/* Course Info */}
+                <div className="space-y-3">
+                    <div>
+                        <h3 className="text-xl font-semibold text-[#1F2937] hover:text-[#10B981] transition-colors duration-200 line-clamp-2">
+                            {courseName}
+                        </h3>
+                        <p className="text-base text-[#6B7280]">{instructor}</p>
                     </div>
-                    <div className="text-lg text-gray-600">{instructor}</div>
-                </div>
-                <div className="flex justify-between items-center">
-                    <div className="text-sm text-gray-500">{venue}</div>
-                    <div className="bg-blue-100 text-blue-600 text-xs font-medium rounded-full px-3 py-1">
-                        {category}
+                    <div className="flex justify-between items-center">
+                        <span className="text-sm text-[#6B7280]">{venue}</span>
+                        <span className="bg-[#ECFDF5] text-[#059669] text-xs font-medium rounded-full px-3 py-1">
+                            {category}
+                        </span>
                     </div>
+                    <p className="text-xs text-[#9CA3AF]">{schedule}</p>
                 </div>
-            </div>
 
-            <div className="text-xs text-gray-400 text-left">{schedule}</div>
-
-            <div className="mt-6 text-left">
-                <MyButton name="Enroll Now" radius="16px" backgroundColor="green" txtColor="white" />
+                {/* Button */}
+                <div className="mt-4">
+                    <MyButton
+                        name="Enroll Now"
+                        radius="8px"
+                        backgroundColor="#10B981"
+                        txtColor="white"
+                        hoverBackgroundColor="#059669"
+                        width="full"
+                        height="40px"
+                    />
+                </div>
             </div>
         </div>
     );

@@ -3,18 +3,18 @@ import { Briefcase } from 'lucide-react';
 
 export default function CategoryCard({ title, jobsCount, icon: Icon = Briefcase }) {
     return (
-        <div className="bg-white shadow-md rounded-lg p-4 flex items-center gap-3 border border-gray-200 hover:shadow-lg transition-all duration-300 w-full max-w-sm cursor-pointer transform hover:scale-105">
+        <div className="bg-white shadow-md rounded-xl p-4 flex items-center gap-4 border border-gray-100 hover:shadow-lg hover:scale-[1.03] transition-all duration-300 w-full max-w-[280px] cursor-pointer">
             {/* Icon Container */}
-            <div className="w-10 h-10 bg-blue-50 text-blue-600 flex items-center justify-center rounded-lg">
-                <Icon size={20} strokeWidth={2} />
+            <div className="w-12 h-12 bg-[#ECFDF5] text-[#059669] flex items-center justify-center rounded-lg">
+                <Icon size={24} strokeWidth={2} />
             </div>
-            
+
             {/* Content Section */}
             <div>
-                <h3 className="text-base font-semibold text-gray-900 font-inter tracking-tight">
+                <h3 className="text-lg font-semibold text-[#1F2937] tracking-tight line-clamp-1">
                     {title}
                 </h3>
-                <p className="text-gray-600 text-xs font-medium">
+                <p className="text-[#6B7280] text-sm font-medium">
                     {jobsCount} jobs available
                 </p>
             </div>
