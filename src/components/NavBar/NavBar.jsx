@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import MyButton from '../../common/components/MyButton/MyButton';
-import { Link } from 'react-router';
+import { NavLink, Link } from 'react-router';
 import Profile from '../../common/components/Profile/Profile.jsx';
 import { useAuth } from '../../context/AuthContext.jsx';
 
@@ -19,10 +19,13 @@ const NavBar = () => {
     }, [user]);
 
     const handleLogout = () => {
-        console.log('User logged out');
+        // console.log('User logged out');
         setIsUser(false);
         setShowSignIn(true);
     };
+
+    const activeClassName = "text-[#D32F2F] font-medium";
+    const inactiveClassName = "text-[#FFFFFF] font-medium hover:text-[#1976D2] transition-colors duration-200";
 
     return (
         <nav className="fixed top-0 left-0 w-full bg-[#212121] border-b border-[#D32F2F] z-50 shadow-sm">
@@ -38,9 +41,12 @@ const NavBar = () => {
 
                         {/* Desktop Menu - Left Side */}
                         <div className="hidden lg:flex items-center space-x-10">
-                            <Link to="/" className="text-[#FFFFFF] font-medium hover:text-[#1976D2] transition-colors duration-200">
+                            <NavLink
+                                to="/"
+                                className={({ isActive }) => isActive ? activeClassName : inactiveClassName}
+                            >
                                 Home
-                            </Link>
+                            </NavLink>
                             <div className="relative group">
                                 <button
                                     className="flex items-center text-[#FFFFFF] font-medium hover:text-[#1976D2] py-6 transition-colors duration-200"
@@ -56,9 +62,16 @@ const NavBar = () => {
                                         onMouseEnter={() => setShowTalentDropdown(true)}
                                         onMouseLeave={() => setShowTalentDropdown(false)}
                                     >
-                                        <Link to="/sign-up" className="block px-5 py-3 text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF] transition-colors duration-200">
+                                        <NavLink
+                                            to="/sign-up"
+                                            className={({ isActive }) =>
+                                                `block px-5 py-3 ${isActive
+                                                    ? "bg-[#D32F2F] text-[#FFFFFF]"
+                                                    : "text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF]"} transition-colors duration-200`
+                                            }
+                                        >
                                             Become an Instructor
-                                        </Link>
+                                        </NavLink>
                                         <div className="block px-5 py-3 text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF] transition-colors duration-200">
                                             Start Learning
                                         </div>
@@ -68,21 +81,30 @@ const NavBar = () => {
                                     </div>
                                 )}
                             </div>
-                            <Link to="/jobs" className="text-[#FFFFFF] font-medium hover:text-[#1976D2] transition-colors duration-200">
+                            <NavLink
+                                to="/jobs"
+                                className={({ isActive }) => isActive ? activeClassName : inactiveClassName}
+                            >
                                 Find Job
-                            </Link>
-                            <Link to="/why" className="text-[#FFFFFF] font-medium hover:text-[#1976D2] transition-colors duration-200">
+                            </NavLink>
+                            <NavLink
+                                to="/why"
+                                className={({ isActive }) => isActive ? activeClassName : inactiveClassName}
+                            >
                                 Why SeekersConnect
-                            </Link>
+                            </NavLink>
                         </div>
                     </div>
 
                     {/* Desktop Menu - Right Side */}
                     <div className="hidden lg:flex items-center space-x-6 ml-60">
                         {showSignIn && (
-                            <Link to="/sign-in" className="text-[#FFFFFF] font-medium hover:text-[#1976D2] transition-colors duration-200">
+                            <NavLink
+                                to="/sign-in"
+                                className={({ isActive }) => isActive ? activeClassName : inactiveClassName}
+                            >
                                 Sign In
-                            </Link>
+                            </NavLink>
                         )}
                         <MyButton
                             name="Post a Job"
@@ -113,18 +135,34 @@ const NavBar = () => {
                     } overflow-hidden bg-[#212121] border-t border-[#D32F2F]`}
             >
                 <div className="px-6 py-4 space-y-2">
-                    <Link to="/" className="block px-4 py-3 text-[#FFFFFF] font-medium hover:bg-[#1976D2] hover:text-[#FFFFFF] rounded-md transition-colors duration-200">
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                            `block px-4 py-3 font-medium rounded-md transition-colors duration-200 ${isActive
+                                ? "bg-[#D32F2F] text-[#FFFFFF]"
+                                : "text-[#FFFFFF] hover:bg-[#1976D2] hover:text-[#FFFFFF]"
+                            }`
+                        }
+                    >
                         Home
-                    </Link>
+                    </NavLink>
                     <div className="py-2">
                         <button className="w-full text-left px-4 py-3 text-[#FFFFFF] font-medium hover:bg-[#1976D2] hover:text-[#FFFFFF] rounded-md flex justify-between items-center transition-colors duration-200">
                             Find Talent
                             <span className="text-sm">▼</span>
                         </button>
                         <div className="pl-6 space-y-1 mt-2">
-                            <Link to="/sign-up" className="block px-4 py-3 text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF] rounded-md transition-colors duration-200">
+                            <NavLink
+                                to="/sign-up"
+                                className={({ isActive }) =>
+                                    `block px-4 py-3 rounded-md transition-colors duration-200 ${isActive
+                                        ? "bg-[#D32F2F] text-[#FFFFFF]"
+                                        : "text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF]"
+                                    }`
+                                }
+                            >
                                 Become an Instructor
-                            </Link>
+                            </NavLink>
                             <div className="block px-4 py-3 text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF] rounded-md transition-colors duration-200">
                                 Start Learning
                             </div>
@@ -133,15 +171,39 @@ const NavBar = () => {
                             </div>
                         </div>
                     </div>
-                    <Link to="/jobs" className="block px-4 py-3 text-[#FFFFFF] font-medium hover:bg-[#1976D2] hover:text-[#FFFFFF] rounded-md transition-colors duration-200">
+                    <NavLink
+                        to="/jobs"
+                        className={({ isActive }) =>
+                            `block px-4 py-3 font-medium rounded-md transition-colors duration-200 ${isActive
+                                ? "bg-[#D32F2F] text-[#FFFFFF]"
+                                : "text-[#FFFFFF] hover:bg-[#1976D2] hover:text-[#FFFFFF]"
+                            }`
+                        }
+                    >
                         Find Job
-                    </Link>
-                    <Link to="/why" className="block px-4 py-3 text-[#FFFFFF] font-medium hover:bg-[#1976D2] hover:text-[#FFFFFF] rounded-md transition-colors duration-200">
+                    </NavLink>
+                    <NavLink
+                        to="/why"
+                        className={({ isActive }) =>
+                            `block px-4 py-3 font-medium rounded-md transition-colors duration-200 ${isActive
+                                ? "bg-[#D32F2F] text-[#FFFFFF]"
+                                : "text-[#FFFFFF] hover:bg-[#1976D2] hover:text-[#FFFFFF]"
+                            }`
+                        }
+                    >
                         Why SeekersConnect
-                    </Link>
-                    <Link to="/sign-in" className="block px-4 py-3 text-[#FFFFFF] font-medium hover:bg-[#1976D2] hover:text-[#FFFFFF] rounded-md transition-colors duration-200">
+                    </NavLink>
+                    <NavLink
+                        to="/sign-in"
+                        className={({ isActive }) =>
+                            `block px-4 py-3 font-medium rounded-md transition-colors duration-200 ${isActive
+                                ? "bg-[#D32F2F] text-[#FFFFFF]"
+                                : "text-[#FFFFFF] hover:bg-[#1976D2] hover:text-[#FFFFFF]"
+                            }`
+                        }
+                    >
                         Sign In
-                    </Link>
+                    </NavLink>
                     <div className="pt-2">
                         <button className="w-full bg-[#D32F2F] text-[#FFFFFF] px-6 py-3 rounded-lg hover:bg-[#B71C1C] transition-colors duration-200 font-medium">
                             Post a Job
