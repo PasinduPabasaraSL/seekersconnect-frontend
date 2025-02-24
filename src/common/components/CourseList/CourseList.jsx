@@ -45,7 +45,7 @@ const courses = [
         category: "Online",
         schedule: "Mon, Wed - 3:00 PM"
     }
-];
+]; // api call
 
 const CourseList = () => {
     const scrollRef = useRef(null);
@@ -87,9 +87,9 @@ const CourseList = () => {
                 </button>
             )}
 
-            <div ref={scrollRef} className="overflow-x-auto flex gap-11.5 px-0 py-4 scrollbar-hide scroll-smooth scroll-snap-x h-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div ref={scrollRef} className="overflow-x-auto flex gap-5.5 px-0 py-4 scrollbar-hide scroll-smooth scroll-snap-x h-full" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                 {courses.map((course, index) => (
-                    <div key={index} className="min-w-[280px] snap-center h-full">
+                    <div key={index} className="min-w-[300px] snap-center h-full">
                         <CourseCard
                             courseName={course.courseName}
                             instructor={course.instructor}

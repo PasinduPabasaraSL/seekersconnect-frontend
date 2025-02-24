@@ -18,7 +18,7 @@ function JobCard(props) {
 
     return (
         <div
-            className="bg-white rounded-lg shadow-lg p-6 mb-4 hover:scale-105 transform transition duration-300"
+            className="bg-white rounded-xl shadow-lg p-6 mb-4 hover:scale-105 transform transition duration-300"
             style={{ width: width || "auto" }}
         >
             <div className="flex flex-col justify-between mb-4">

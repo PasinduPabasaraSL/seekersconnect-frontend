@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Mail, Lock, Eye, EyeOff, X } from 'lucide-react';
+import { User, Mail, Lock, Eye, EyeOff, X, Briefcase, UserCircle } from 'lucide-react'; // Added UserCircle
 import { Link, useNavigate } from 'react-router';
 import axios from 'axios';
 
@@ -9,24 +9,23 @@ export default function SignUp() {
         fullName: '',
         email: '',
         password: '',
-        userType: 'job seeker'
+        userType: 'job seeker',
     });
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const handleClose = () => {
-        navigate("/");
-    }
+        navigate('/');
+    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({
+        setFormData((prev) => ({
             ...prev,
-            [name]: value
+            [name]: value,
         }));
     };
 
-    // Validate email format
     const isValidEmail = (email) => {
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return regex.test(email);
@@ -35,51 +34,45 @@ export default function SignUp() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Check if the email is valid
         if (!isValidEmail(formData.email)) {
             setErrorMessage('Please enter a valid email address.');
             return;
         }
 
         try {
-
-            const formattedUserType = userType.toUpperCase().replace(/\s+/g, '_');
+            const formattedUserType = formData.userType.toUpperCase().replace(/\s+/g, '_');
 
             const response = await axios.post('http://localhost:8080/api/v1/user/register', {
                 username: formData.fullName,
+                email: formData.email,
                 password: formData.password,
-                role: formattedUserType
+                role: formattedUserType,
             });
 
             console.log('Registration successful:', response.data);
-            alert("Registration successful")
+            alert('Registration successful!');
 
             setFormData({
                 fullName: '',
                 email: '',
                 password: '',
-                userType: 'job seeker'
+                userType: 'job seeker',
             });
 
-            // Redirect based on user type
-            switch (userType) {
-                case 'admin':
-                    // Navigate to admin dashboard
-                    break;
+            switch (formData.userType) {
                 case 'employer':
-                    // Navigate to employer dashboard
+                    navigate('/employer-dashboard');
                     break;
                 case 'job seeker':
-                    // Navigate to job seeker dashboard
+                    navigate('/job-seeker-dashboard');
                     break;
                 case 'trainer':
-                    // Navigate to trainer dashboard
+                    navigate('/trainer-dashboard');
                     break;
                 default:
-                    // Default dashboard
+                    navigate('/');
                     break;
             }
-
         } catch (error) {
             setErrorMessage('Registration failed. Please try again.');
             console.error('Error during registration:', error);
@@ -88,34 +81,42 @@ export default function SignUp() {
                 fullName: '',
                 email: '',
                 password: '',
-                userType: 'job seeker'
+                userType: 'job seeker',
             });
         }
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 mt-7">
-            <div className="relative max-w-md w-full space-y-8 p-8 bg-white rounded-xl shadow-lg">
-                {/* Close Button */}
+        <div
+            className="flex items-center justify-center min-h-screen bg-cover bg-center relative"
+            style={{
+                backgroundImage: `url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+            }}
+        >
+            <div className="relative max-w-md w-full space-y-6 p-8 bg-white/95 backdrop-blur-lg rounded-2xl">
                 <button
                     onClick={handleClose}
-                    className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 cursor-pointer"
+                    className="absolute top-3 right-3 text-gray-600 hover:text-gray-900 hover:bg-gray-200 p-1 rounded-full transition-all duration-200"
                 >
                     <X className="w-6 h-6" />
                 </button>
+
                 <div className="text-center">
-                    <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
-                    <p className="mt-2 text-sm text-gray-600">
-                        Join our platform to get started
-                    </p>
+                    <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">Join With Us</h2>
+                    <p className="mt-1 text-sm text-gray-600">Launch your career journey today</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-                    <div className="space-y-4">
-                        {/* Full Name Input */}
+                {errorMessage && (
+                    <p className="text-red-500 text-sm text-center bg-red-50 border border-red-200 rounded-lg py-2 animate-shake">
+                        {errorMessage}
+                    </p>
+                )}
+
+                <form onSubmit={handleSubmit} className="mt-4 space-y-5">
+                    <div className="space-y-5">
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <User className="h-5 w-5 text-gray-400" />
+                                <User className="h-5 w-5 text-gray-500" />
                             </div>
                             <input
                                 name="fullName"
@@ -124,14 +125,13 @@ export default function SignUp() {
                                 value={formData.fullName}
                                 onChange={handleInputChange}
                                 placeholder="Full Name"
-                                className="pl-10 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150"
+                                className="pl-10 w-full px-3 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-500"
                             />
                         </div>
 
-                        {/* Email Input */}
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <Mail className="h-5 w-5 text-gray-400" />
+                                <Mail className="h-5 w-5 text-gray-500" />
                             </div>
                             <input
                                 name="email"
@@ -140,20 +140,19 @@ export default function SignUp() {
                                 value={formData.email}
                                 onChange={handleInputChange}
                                 placeholder="Email address"
-                                className="pl-10 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150"
+                                className="pl-10 w-full px-3 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-500"
                             />
                         </div>
 
-                        {/* Account Type Select */}
                         <div className="relative">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Account Type
-                            </label>
+                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <UserCircle className="h-5 w-5 text-gray-500" />
+                            </div>
                             <select
                                 name="userType"
                                 value={formData.userType}
                                 onChange={handleInputChange}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150"
+                                className="pl-10 w-full px-3 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-500 appearance-none"
                             >
                                 <option value="job seeker">Job Seeker</option>
                                 <option value="employer">Employer</option>
@@ -161,41 +160,30 @@ export default function SignUp() {
                             </select>
                         </div>
 
-                        {/* Password Input */}
                         <div className="relative">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <Lock className="h-5 w-5 text-gray-400" />
+                                <Lock className="h-5 w-5 text-gray-500" />
                             </div>
                             <input
                                 name="password"
-                                type={showPassword ? "text" : "password"}
+                                type={showPassword ? 'text' : 'password'}
                                 required
                                 value={formData.password}
                                 onChange={handleInputChange}
                                 placeholder="Password"
-                                className="pl-10 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-150"
+                                className="pl-10 w-full px-3 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-500"
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
                                 className="absolute inset-y-0 right-0 pr-3 flex items-center"
                             >
-                                {showPassword ? (
-                                    <EyeOff className="h-5 w-5 text-gray-400" />
-                                ) : (
-                                    <Eye className="h-5 w-5 text-gray-400" />
-                                )}
+                                {showPassword ? <EyeOff className="h-5 w-5 text-gray-500" /> : <Eye className="h-5 w-5 text-gray-500" />}
                             </button>
                         </div>
                     </div>
 
-                    {/* Error Message */}
-                    {errorMessage && (
-                        <p className="text-red-500 text-sm text-center">{errorMessage}</p>
-                    )}
-
-                    {/* Terms and Conditions Checkbox */}
-                    <div className="flex items-center">
+                    <div className="flex items-center text-sm">
                         <input
                             id="terms"
                             name="terms"
@@ -203,36 +191,32 @@ export default function SignUp() {
                             required
                             className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                         />
-                        <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
+                        <label htmlFor="terms" className="ml-2 text-gray-700">
                             I agree to the{' '}
-                            <a href="#" className="text-blue-600 hover:text-blue-500">
-                                Terms and Conditions
-                            </a>
-                            {' '}and{' '}
-                            <a href="#" className="text-blue-600 hover:text-blue-500">
+                            <a href="#" className="text-blue-600 hover:text-blue-700">
+                                Terms
+                            </a>{' '}
+                            and{' '}
+                            <a href="#" className="text-blue-600 hover:text-blue-700">
                                 Privacy Policy
                             </a>
                         </label>
                     </div>
 
-                    {/* Submit Button */}
                     <div>
                         <button
                             type="submit"
-                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150"
+                            className="w-full py-3 px-4 rounded-xl text-white font-medium bg-gradient-to-r from-blue-900 to-blue-500 hover:from-blue-800 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 hover:shadow-lg"
                         >
                             Create Account
                         </button>
                     </div>
 
-                    {/* Sign In Link */}
                     <div className="text-center text-sm">
                         <p className="text-gray-600">
                             Already have an account?{' '}
-                            <Link to="/sign-in">
-                                <span className="font-medium text-blue-600 hover:text-blue-500">
-                                    Sign in
-                                </span>
+                            <Link to="/sign-in" className="font-medium text-blue-600 hover:text-blue-700">
+                                Sign in
                             </Link>
                         </p>
                     </div>
