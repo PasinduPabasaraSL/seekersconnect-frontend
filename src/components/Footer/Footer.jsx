@@ -4,7 +4,10 @@ export default function Footer() {
             <div className="max-w-screen-xl mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between">
                     <div className="mb-6 md:mb-0">
-                        <div className="pb-5 text-[#dfe6e9] text-3xl">Seekers<span className="text-[#00cec9]">Connect</span></div>
+                        <div className="text-3xl font-bold">
+                            <span className="text-white">Seekers</span>
+                            <span className="text-[#10B981]">Connect</span>
+                        </div>
                         <p className="text-sm text-gray-400">456 Innovation Park,
                             Colombo 5,
                             Western Province, Sri Lanka</p>
