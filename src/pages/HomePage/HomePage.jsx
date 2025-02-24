@@ -72,9 +72,9 @@ export default function HomePage() {
         visible: {
             opacity: 1,
             transition: {
-                staggerChildren: 0.1
-            }
-        }
+                staggerChildren: 0.1,
+            },
+        },
     };
 
     const itemVariants = {
@@ -84,9 +84,9 @@ export default function HomePage() {
             y: 0,
             transition: {
                 type: "spring",
-                stiffness: 100
-            }
-        }
+                stiffness: 100,
+            },
+        },
     };
 
     const sectionHeaderVariants = {
@@ -96,20 +96,20 @@ export default function HomePage() {
             x: 0,
             transition: {
                 type: "spring",
-                stiffness: 100
-            }
-        }
+                stiffness: 100,
+            },
+        },
     };
 
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen bg-[#212121]">
             <NavBar />
             <HeroSection />
-            <div className="flex-1 bg-[#F9FAFB] py-12">
+            <div className="flex-1 bg-[#212121] py-12">
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Recent Jobs */}
                     <motion.h1
-                        className="text-3xl font-bold text-[#1F2937] mb-8"
+                        className="text-3xl font-bold text-[#FFFFFF] mb-8 border-l-4 border-[#D32F2F] pl-4"
                         variants={sectionHeaderVariants}
                         initial="hidden"
                         whileInView="visible"
@@ -145,7 +145,7 @@ export default function HomePage() {
 
                     {/* Popular Courses */}
                     <motion.h1
-                        className="text-3xl font-bold text-[#1F2937] mt-16 mb-6"
+                        className="text-3xl font-bold text-[#FFFFFF] mt-16 mb-6 border-l-4 border-[#D32F2F] pl-4"
                         variants={sectionHeaderVariants}
                         initial="hidden"
                         whileInView="visible"
@@ -164,7 +164,7 @@ export default function HomePage() {
 
                     {/* Categories */}
                     <motion.h2
-                        className="text-4xl font-bold text-[#1F2937] text-center mt-16 mb-10"
+                        className="text-4xl font-bold text-[#FFFFFF] text-center mt-16 mb-10 border-b-2 border-[#1976D2] pb-2"
                         variants={sectionHeaderVariants}
                         initial="hidden"
                         whileInView="visible"
@@ -185,7 +185,7 @@ export default function HomePage() {
                                 variants={itemVariants}
                                 whileHover={{
                                     scale: 1.05,
-                                    transition: { type: "spring", stiffness: 300 }
+                                    transition: { type: "spring", stiffness: 300 },
                                 }}
                                 whileTap={{ scale: 0.95 }}
                             >
