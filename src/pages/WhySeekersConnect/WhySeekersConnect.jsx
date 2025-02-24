@@ -2,256 +2,177 @@ import React from 'react';
 import { DatabaseZap, MapPin, BellPlus } from 'lucide-react';
 import { motion } from 'framer-motion';
 import MyButton from '../../common/components/MyButton/MyButton';
-import CoverImage from '../../assets/cover.png';
 import { Link } from 'react-router';
 import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
 
 const WhySeekersConnect = () => {
-
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
-    };
-
-    const staggerChildren = {
+    const fadeIn = {
         hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2
-            }
-        }
+        visible: { opacity: 1, transition: { duration: 0.6 } },
     };
 
-    const scaleIn = {
-        hidden: { scale: 0.8, opacity: 0 },
-        visible: {
-            scale: 1,
-            opacity: 1,
-            transition: { type: "spring", stiffness: 100 }
-        }
+    const slideIn = {
+        hidden: { x: -50, opacity: 0 },
+        visible: { x: 0, opacity: 1, transition: { duration: 0.5 } },
     };
 
     return (
-        <div className="bg-black text-white">
+        <div className="bg-[#000000] text-[#FFFFFF] font-sans">
             <NavBar />
-            <div className="container mx-auto px-6 py-16 lg:px-20 mt-10">
+            <div className="container mx-auto px-6 py-12 lg:px-16 mt-15">
                 {/* Page Introduction */}
                 <motion.section
-                    className="text-center mb-16"
+                    className="mb-20 text-center lg:text-left max-w-3xl mx-auto lg:mx-0"
                     initial="hidden"
                     animate="visible"
-                    variants={fadeInUp}
-                    transition={{ duration: 0.6 }}
+                    variants={fadeIn}
                 >
-                    <h1 className="text-5xl font-bold text-white leading-tight">
-                        Why Choose SeekersConnect?
+                    <h1 className="text-4xl lg:text-5xl font-bold text-[#FFFFFF] leading-tight mb-6">
+                        Why SeekersConnect?
                     </h1>
-                    <p className="text-lg text-gray-300 mt-6 max-w-3xl mx-auto">
-                        SeekersConnect is your go-to job portal and skill development platform designed to help you build a better career. Whether you're looking for your first job or advancing to the next level, SeekersConnect offers tools that make the process easier, faster, and more personalized.
+                    <p className="text-lg text-[#FFFFFF] opacity-80 mb-8">
+                        Your ultimate job portal and skill development platform. Build a better career with personalized tools designed for every step of your journey—whether it’s landing your first job or leveling up to the next big role.
                     </p>
-                    <motion.div
-                        className="mt-8"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Link to="/sign-up">
                             <MyButton
                                 name="Get Started"
-                                txtColor="white"
-                                backgroundColor="#1E90FF" // Blue
+                                txtColor="#FFFFFF"
+                                backgroundColor="#D32F2F"
                                 height="50px"
-                                radius="24px"
-                                width="150px"
+                                radius="12px"
+                                width="160px"
                             />
                         </Link>
                     </motion.div>
                 </motion.section>
 
                 {/* Key Features */}
-                <section className="mb-16">
-                    <motion.h2
-                        className="text-4xl font-semibold text-white text-center mb-12"
-                        variants={fadeInUp}
-                        initial="hidden"
-                        animate="visible"
-                    >
-                        Key Features & Benefits
-                    </motion.h2>
-                    <motion.div
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12"
-                        variants={staggerChildren}
-                        initial="hidden"
-                        animate="visible"
-                    >
-                        <motion.div
-                            className="bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-blue-500/50 transition-shadow duration-300"
-                            variants={scaleIn}
-                            whileHover={{ y: -10 }}
-                        >
-                            <h3 className="text-2xl font-semibold text-white">Personalized Job Recommendations</h3>
-                            <p className="text-gray-400 mt-4">
-                                Receive job suggestions tailored to your skills and interests, helping you find the best match for your career.
-                            </p>
+                <section className="mb-20">
+                    <h2 className="text-3xl font-semibold text-[#FFFFFF] text-center mb-12">Key Features & Benefits</h2>
+                    <div className="space-y-12">
+                        {[
+                            { title: "Personalized Job Recommendations", desc: "Tailored job suggestions based on your skills and interests, ensuring you find the perfect career match quickly.", icon: <DatabaseZap size={24} /> },
+                            { title: "Easy Application Process", desc: "Streamlined applications let you apply to multiple jobs with just a few clicks, saving you time and effort.", icon: <MapPin size={24} /> },
+                            { title: "Real-Time Job Alerts", desc: "Instant notifications keep you updated on new opportunities that align with your profile, so you never miss out.", icon: <BellPlus size={24} /> },
+                        ].map((feature, index) => (
                             <motion.div
-                                className="flex items-center mt-6 text-blue-500"
-                                whileHover={{ x: 10 }}
+                                key={feature.title}
+                                className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-start gap-6`}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={slideIn}
                             >
-                                <DatabaseZap size={20} className="mr-3" />
-                                <span className="font-medium">Job Opportunities</span>
+                                <div className="bg-[#1A1A1A] p-6 rounded-lg w-full hover:border-[#1976D2] border-2 border-transparent transition-all">
+                                    <div className="flex items-center mb-4">
+                                        <span className="text-[#1976D2] mr-3">{feature.icon}</span>
+                                        <h3 className="text-2xl font-semibold text-[#FFFFFF]">{feature.title}</h3>
+                                    </div>
+                                    <p className="text-[#FFFFFF] opacity-70">{feature.desc}</p>
+                                </div>
                             </motion.div>
-                        </motion.div>
-
-                        <motion.div
-                            className="bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-blue-500/50 transition-shadow duration-300"
-                            variants={scaleIn}
-                            whileHover={{ y: -10 }}
-                        >
-                            <h3 className="text-2xl font-semibold text-white">Easy Application Process</h3>
-                            <p className="text-gray-400 mt-4">
-                                Apply to multiple job openings with just a few clicks. Streamlined processes to save you time.
-                            </p>
-                            <motion.div
-                                className="flex items-center mt-6 text-blue-500"
-                                whileHover={{ x: 10 }}
-                            >
-                                <MapPin size={20} className="mr-3" />
-                                <span className="font-medium">Location Flexibility</span>
-                            </motion.div>
-                        </motion.div>
-
-                        <motion.div
-                            className="bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-blue-500/50 transition-shadow duration-300"
-                            variants={scaleIn}
-                            whileHover={{ y: -10 }}
-                        >
-                            <h3 className="text-2xl font-semibold text-white">Real-Time Job Alerts</h3>
-                            <p className="text-gray-400 mt-4">
-                                Get notified instantly when new job opportunities that match your profile are posted.
-                            </p>
-                            <motion.div
-                                className="flex items-center mt-6 text-blue-500"
-                                whileHover={{ x: 10 }}
-                            >
-                                <BellPlus size={20} className="mr-3" />
-                                <span className="font-medium">Instant Notifications</span>
-                            </motion.div>
-                        </motion.div>
-                    </motion.div>
+                        ))}
+                    </div>
                 </section>
 
                 {/* Testimonials */}
                 <motion.section
-                    className="text-center mb-16"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+                    className="mb-20"
+                    initial="hidden"
+                    whileInView="visible"
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    variants={fadeIn}
                 >
-                    <h2 className="text-4xl font-semibold text-white mb-8">What Our Users Say</h2>
-                    <motion.div
-                        className="max-w-3xl mx-auto"
-                        whileHover={{ scale: 1.02 }}
-                    >
-                        <blockquote className="italic text-gray-400 text-lg mb-6">
-                            "SeekersConnect helped me find my dream job in just two weeks. The personalized job recommendations were spot-on!"
-                        </blockquote>
-                        <cite className="text-gray-500 text-xl">- John Doe, Software Engineer</cite>
-                    </motion.div>
-                    <motion.div
-                        className="max-w-3xl mx-auto mt-8"
-                        whileHover={{ scale: 1.02 }}
-                    >
-                        <blockquote className="italic text-gray-400 text-lg mb-6">
-                            "I love the skill development section of SeekersConnect. It helped me upgrade my skills and land a better position."
-                        </blockquote>
-                        <cite className="text-gray-500 text-xl">- Jane Smith, Web Developer</cite>
-                    </motion.div>
+                    <h2 className="text-3xl font-semibold text-[#FFFFFF] text-center mb-12">What Our Users Say</h2>
+                    <div className="flex flex-col lg:flex-row gap-8 overflow-x-auto pb-4">
+                        {[
+                            { quote: "Found my dream job in two weeks—amazing recommendations!", name: "John Doe", role: "Software Engineer" },
+                            { quote: "Skill development courses helped me level up fast.", name: "Jane Smith", role: "Web Developer" },
+                        ].map((testimonial) => (
+                            <div
+                                key={testimonial.name}
+                                className="bg-[#1A1A1A] p-6 rounded-lg flex-1 min-w-[300px] hover:bg-[#D32F2F]/10 transition-colors"
+                            >
+                                <blockquote className="italic text-[#FFFFFF] opacity-70 mb-4">"{testimonial.quote}"</blockquote>
+                                <cite className="text-[#FFFFFF] font-medium">- {testimonial.name}, {testimonial.role}</cite>
+                            </div>
+                        ))}
+                    </div>
                 </motion.section>
 
                 {/* How It Works */}
-                <h2 className="text-4xl font-semibold text-white text-center mb-8">How It Works</h2>
-                <motion.section
-                    className="bg-gray-800 p-12 rounded-lg mb-16 bg-cover bg-no-repeat"
-                    style={{ backgroundImage: `url(${CoverImage})` }}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                >
-                    <motion.div
-                        className="flex justify-between items-center max-w-5xl mx-auto"
-                        variants={staggerChildren}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                    >
-                        {[1, 2, 3].map((step) => (
+                <section className="mb-20">
+                    <h2 className="text-3xl font-semibold text-[#FFFFFF] text-center mb-12">How It Works</h2>
+                    <div className="relative max-w-2xl mx-auto space-y-12">
+                        {[
+                            { step: "Create Your Profile", desc: "Sign up and add your skills, experience, and preferences to get started." },
+                            { step: "Discover Opportunities", desc: "Explore job listings and skill development courses tailored to your goals." },
+                            { step: "Apply & Grow", desc: "Apply to jobs easily and take courses to advance your career." },
+                        ].map((item, index) => (
                             <motion.div
-                                key={step}
-                                className="text-center w-1/3"
-                                variants={scaleIn}
+                                key={item.step}
+                                className="flex items-start relative"
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={slideIn}
                             >
-                                <h3 className="text-xl font-semibold text-black">
-                                    {step === 1 && "Step 1: Create Your Profile"}
-                                    {step === 2 && "Step 2: Discover Opportunities"}
-                                    {step === 3 && "Step 3: Apply & Grow"}
-                                </h3>
-                                <p className="text-red-800 mt-2">
-                                    {step === 1 && "Sign up and complete your profile with your skills, experience, and preferences."}
-                                    {step === 2 && "Explore job openings and skill development courses tailored to your goals."}
-                                    {step === 3 && "Apply for jobs with a single click and take skill courses to advance your career."}
-                                </p>
+                                <div className="w-10 h-10 bg-[#D32F2F] rounded-full flex items-center justify-center text-[#FFFFFF] font-bold mr-6">
+                                    {index + 1}
+                                </div>
+                                <div className="flex-1">
+                                    <h3 className="text-xl font-semibold text-[#FFFFFF] mb-2">{item.step}</h3>
+                                    <p className="text-[#FFFFFF] opacity-70">{item.desc}</p>
+                                </div>
                             </motion.div>
                         ))}
-                    </motion.div>
-                </motion.section>
+                    </div>
+                </section>
 
-                <div className="flex flex-row gap-10">
-                    {/* Trust & Security */}
-                    <motion.section
-                        className="text-center mb-16"
-                        whileHover={{ scale: 1.02 }}
-                    >
-                        <h2 className="text-4xl font-semibold text-white mb-6">Your Data is Safe with Us</h2>
-                        <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-                            We prioritize your privacy and security. Your data is protected, and we only share it with employers you choose.
+                {/* Trust & CTA */}
+                <motion.section
+                    className="flex flex-col lg:flex-row gap-12 mb-20"
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeIn}
+                >
+                    <div className="lg:w-1/2 bg-[#1A1A1A] p-8 rounded-lg">
+                        <h2 className="text-3xl font-semibold text-[#FFFFFF] mb-6">Your Data is Safe</h2>
+                        <p className="text-[#FFFFFF] opacity-70 mb-8">
+                            We prioritize your privacy—your data stays secure and is only shared with your approval.
                         </p>
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <MyButton
                                 name="Learn More"
-                                txtColor="white"
-                                backgroundColor="#FF4500" // Red-orange
+                                txtColor="#FFFFFF"
+                                backgroundColor="#1976D2"
                                 height="50px"
-                                radius="24px"
-                                width="150px"
+                                radius="12px"
+                                width="160px"
                             />
                         </motion.div>
-                    </motion.section>
-
-                    {/* Call to Action */}
-                    <motion.section
-                        className="text-center"
-                        whileHover={{ scale: 1.02 }}
-                    >
-                        <h2 className="text-4xl font-semibold text-white mb-6">Ready to Find Your Dream Job?</h2>
-                        <p className="text-lg text-gray-400 mb-8 max-w-3xl mx-auto">
-                            Join SeekersConnect today and begin your journey toward career success!
+                    </div>
+                    <div className="lg:w-1/2 bg-[#1A1A1A] p-8 rounded-lg">
+                        <h2 className="text-3xl font-semibold text-[#FFFFFF] mb-6">Find Your Dream Job</h2>
+                        <p className="text-[#FFFFFF] opacity-70 mb-8">
+                            Join SeekersConnect and kickstart your career journey today!
                         </p>
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Link to="/sign-up">
                                 <MyButton
                                     name="Join Now"
-                                    txtColor="white"
-                                    backgroundColor="#1E90FF" // Blue
+                                    txtColor="#FFFFFF"
+                                    backgroundColor="#D32F2F"
                                     height="50px"
-                                    radius="24px"
-                                    width="150px"
+                                    radius="12px"
+                                    width="160px"
                                 />
                             </Link>
                         </motion.div>
-                    </motion.section>
-                </div>
+                    </div>
+                </motion.section>
             </div>
             <Footer />
         </div>

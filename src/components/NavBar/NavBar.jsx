@@ -24,7 +24,7 @@ const NavBar = () => {
         setShowSignIn(true);
     };
 
-    const activeClassName = "text-[#D32F2F] font-medium border-b-2 border-[#D32F2F]";
+    const activeClassName = "text-[#D32F2F] font-medium";
     const inactiveClassName = "text-[#FFFFFF] font-medium hover:text-[#1976D2] transition-colors duration-200";
 
     return (
