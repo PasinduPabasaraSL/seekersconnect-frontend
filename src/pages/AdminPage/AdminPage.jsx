@@ -41,14 +41,14 @@ const AdminPage = () => {
 
                 {/*content area */}
                 {currentContent === 'dashboard' && <Dashboard />}
-                {currentContent == 'users' && <UserManager />}
-                {currentContent == 'jobs' && <JobsManager />}
-                {currentContent == 'seekers' && <JobSeekerManager />}
-                {currentContent == 'employers' && <EmployerManager />}
-                {currentContent == 'skills' && <CourseManager />}
-                {currentContent == 'analytics' && <Analytics />}
-                {currentContent == 'settings' && <Settings />}
-                {currentContent == 'support' && <Support />}
+                {currentContent === 'users' && <UserManager />}
+                {currentContent === 'jobs' && <JobsManager />}
+                {currentContent === 'seekers' && <JobSeekerManager />}
+                {currentContent === 'employers' && <EmployerManager />}
+                {currentContent === 'skills' && <CourseManager />}
+                {currentContent === 'analytics' && <Analytics />}
+                {currentContent === 'settings' && <Settings />}
+                {currentContent === 'support' && <Support />}
 
             </div>
         </div>

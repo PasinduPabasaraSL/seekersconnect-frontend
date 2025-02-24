@@ -6,7 +6,7 @@ import CourseList from '../../common/components/CourseList/CourseList.jsx';
 import NavBar from '../../components/NavBar/NavBar.jsx';
 import Footer from '../../components/Footer/Footer.jsx';
 import {
-    Briefcase,
+    FolderCode,
     Database,
     Shield,
     PenTool,
@@ -16,6 +16,7 @@ import {
     Stethoscope,
     Wrench,
     Headphones,
+    HeartHandshake,
 } from 'lucide-react';
 
 export default function HomePage() {
@@ -51,13 +52,13 @@ export default function HomePage() {
     ];
 
     const categories = [
-        { title: "Software Development", jobsCount: "20", icon: Briefcase },
+        { title: "Software Development", jobsCount: "20", icon: FolderCode },
         { title: "Data Science & Analytics", jobsCount: "15", icon: Database },
         { title: "Cybersecurity", jobsCount: "10", icon: Shield },
         { title: "UI/UX Design", jobsCount: "12", icon: PenTool },
         { title: "Cloud Computing", jobsCount: "18", icon: Cloud },
         { title: "Marketing & Sales", jobsCount: "25", icon: DollarSign },
-        { title: "Project Management", jobsCount: "14", icon: Briefcase },
+        { title: "Project Management", jobsCount: "14", icon: HeartHandshake },
         { title: "Finance & Accounting", jobsCount: "16", icon: DollarSign },
         { title: "Human Resources", jobsCount: "9", icon: Users },
         { title: "Healthcare & Medical", jobsCount: "22", icon: Stethoscope },
