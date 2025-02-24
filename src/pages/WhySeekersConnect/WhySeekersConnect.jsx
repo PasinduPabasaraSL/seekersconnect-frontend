@@ -36,7 +36,7 @@ const WhySeekersConnect = () => {
     return (
         <div className="bg-black text-white">
             <NavBar />
-            <div className="container mx-auto px-6 py-16 lg:px-20 mt-5">
+            <div className="container mx-auto px-6 py-16 lg:px-20 mt-10">
                 {/* Page Introduction */}
                 <motion.section
                     className="text-center mb-16"
