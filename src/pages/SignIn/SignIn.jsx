@@ -3,7 +3,7 @@ import { Mail, Lock, Eye, EyeOff, UserCircle, X } from 'lucide-react';
 import axios from 'axios';
 import MyButton from '../../common/components/MyButton/MyButton';
 import { Link, useNavigate } from 'react-router';
-
+import SignImg from '../../assets/signin.jpeg';
 
 export default function SignIn() {
     const [email, setEmail] = useState('');
@@ -74,7 +74,7 @@ export default function SignIn() {
         <div
             className="flex items-center justify-center min-h-screen bg-cover bg-center relative"
             style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4')`,
+                backgroundImage: `url(${SignImg})`,
             }}
         >
             {/* Form Container */}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { User, Mail, Lock, Eye, EyeOff, X, Briefcase, UserCircle } from 'lucide-react'; // Added UserCircle
 import { Link, useNavigate } from 'react-router';
 import axios from 'axios';
+import SignImg from '../../assets/signup.avif';
 
 export default function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
@@ -11,6 +12,7 @@ export default function SignUp() {
         password: '',
         userType: 'job seeker',
     });
+
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
@@ -90,7 +92,7 @@ export default function SignUp() {
         <div
             className="flex items-center justify-center min-h-screen bg-cover bg-center relative"
             style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+                backgroundImage: `url(${SignImg})`,
             }}
         >
             <div className="relative max-w-md w-full space-y-6 p-8 bg-white/95 backdrop-blur-lg rounded-2xl">
