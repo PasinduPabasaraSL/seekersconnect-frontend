@@ -24,7 +24,7 @@ export default function SideBar({ onItemClick }) {
         { id: 'employers', label: 'Employers', icon: Building },
         { id: 'skills', label: 'Skills & Courses', icon: BookOpen },
         { id: 'analytics', label: 'Analytics', icon: BarChart3 },
-        { id: 'notifications', label: 'Notifications', icon: Bell },
+        // { id: 'notifications', label: 'Notifications', icon: Bell },
         { id: 'settings', label: 'Settings', icon: Settings },
         { id: 'support', label: 'Support', icon: MessageSquare }
     ];
