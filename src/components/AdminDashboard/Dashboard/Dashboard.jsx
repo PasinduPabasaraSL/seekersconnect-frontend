@@ -20,7 +20,7 @@ export default function Dashboard() {
                         >
                             <div className="p-5">
                                 <div className="flex items-center justify-between">
-                                    <div className="font-medium text-gray-500">{stat.title}</div>
+                                    <div className="font-medium text-gray-500 pointer-events-none">{stat.title}</div>
                                     <div
                                         className={`text-sm ${stat.change.startsWith('+')
                                             ? 'text-green-600'
@@ -41,7 +41,7 @@ export default function Dashboard() {
                 <div className="bg-white shadow rounded-lg">
                     <div className="px-4 py-5 border-b border-gray-200">
                         <div className="flex items-center justify-between">
-                            <h3 className="text-lg leading-6 font-medium text-gray-900">
+                            <h3 className="text-lg leading-6 font-medium text-gray-900 pointer-events-none">
                                 Recent Activity
                             </h3>
                         </div>
