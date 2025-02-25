@@ -62,20 +62,16 @@ const NavBar = () => {
                                         onMouseEnter={() => setShowTalentDropdown(true)}
                                         onMouseLeave={() => setShowTalentDropdown(false)}
                                     >
-                                        <NavLink
+                                        <div
                                             to="/sign-up"
-                                            className={({ isActive }) =>
-                                                `block px-5 py-3 ${isActive
-                                                    ? "bg-[#D32F2F] text-[#FFFFFF]"
-                                                    : "text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF]"} transition-colors duration-200`
-                                            }
+                                            className="block px-5 py-3 text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF] transition-colors duration-200 cursor-pointer"
                                         >
                                             Become an Instructor
-                                        </NavLink>
-                                        <div className="block px-5 py-3 text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF] transition-colors duration-200">
+                                        </div>
+                                        <div className="block px-5 py-3 text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF] transition-colors duration-200 cursor-pointer">
                                             Start Learning
                                         </div>
-                                        <div className="block px-5 py-3 text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF] transition-colors duration-200">
+                                        <div className="block px-5 py-3 text-[#FFFFFF] hover:bg-[#D32F2F] hover:text-[#FFFFFF] transition-colors duration-200 cursor-pointer">
                                             CV Booster
                                         </div>
                                     </div>
@@ -211,7 +207,7 @@ const NavBar = () => {
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav >
     );
 };
 
